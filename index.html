@@ -1,222 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
+
+
+
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="theme-color" content=#58b77a>
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" type="image/png" href="/blog/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <meta name="description" content="">
-  <script id="hexo-configurations">
-  var CONFIG = {
-    root: '/blog/',
-    theme: 'lx',
-    version: '0.3.9',
-    localsearch:{
-      "enable": false,
-      "trigger": "auto",
-      "top_n_per_article": 1,
-      "unescape": false,
-      "preload": false
-      },
-    path: 'null'
-  };
-</script>
+  <title>Hexo</title>
 
-  <link rel="shortcut icon" href="/blog/favicon.ico">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/css/main.min.css">
-  <style type="text/css">
-    pre,
-    code {
-      font-family: 'Fira Code', monospace;
-    }
-    html {
-      font-family: sans-serif;
-    }
-    body {
-      font-family: sans-serif;
-    }
-    h1, h2, h3, h4, h5, figure {
-      font-family: sans-serif;
-    }
-    .menu-container{
-      font-family: sans-serif;
-    }
-  </style>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
-  <script src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/jquery.jside.menu.js"></script>
-	<script>
-	$(document).ready(function(){
-	$(".menu-container").jSideMenu({
-	    jSidePosition: "position-right",
-	    jSideSticky: true,
-	    jSideSkin: "greenish",
-	     });
-	}); 
-	</script>
-  
-  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
 <meta name="generator" content="Hexo 4.2.1"></head>
-<body>
-<div id="page">
 
-<div id="lx-aside" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/cover.jpeg)">
-  <div class="overlay">
-  <div class="featured">
-    <div class="avatar"><a href="/blog/"><img src="/blog/images/avatar.jpeg"></a></div>
-    <span>John Doe</span>
-    <h1>Hexo</h1>
-    
-    
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/blog/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
   </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/blog/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/blog/2020/05/28/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93%20/">学习笔记总结 --html篇</a>
+
+      <a href="/blog/2020/05/28/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93%20/" class="index-excerpt">
+        
+        
+          
+        
+        <div>学习前端编程，首先从HTML开始
+HTML入门html是一种超文本标记语言（HyperText Markup Language），用于创建网页的标记语言。
+
+HTML标签：
+实例：12345678910&lt;html lang="en"&gt;  //根标签，lang是属性名, ""引号里面为属性值(告诉搜索引擎网站的内容)&lt;head&gt;    &lt;meta charset="UT</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-05-28
+          </div>
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/blog/2020/05/28/firstblog/">firstblog</a>
+
+      <a href="/blog/2020/05/28/firstblog/" class="index-excerpt">
+        
+        
+          
+        
+        <div>Welcome my blog记录一下第一次创建博客，这是深夜凌晨3点，我这就去睡觉了。</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-05-28
+          </div>
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
   </div>
 </div>
+  
 
-<div id="lx-main-content">
-  <div class="lx-post">
+  
 
-  <div class="lx-entry padding">
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
     <div>
-      <h2 class="title"><a href="/blog/2020/05/28/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93%20/">学习笔记总结 --html篇</a></h2>
-      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-05-28</span>
-      <p><h1 id="学习前端编程，首先从HTML开始"><a href="#学习前端编程，首先从HTML开始" class="headerlink" title="学习前端编程，首先从HTML开始"></a>学习前端编程，首先从HTML开始</h1><hr>
-<h2 id="HTML入门"><a href="#HTML入门" class="headerlink" title="HTML入门"></a>HTML入门</h2><p>html是一种超文本标记语言（HyperText Markup Language），用于创建网页的标记语言。</p>
-<blockquote>
-<h6 id="HTML标签："><a href="#HTML标签：" class="headerlink" title="HTML标签："></a>HTML标签：</h6></blockquote>
-<h5 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span>  //根标签，lang是属性名, ""引号里面为属性值(告诉搜索引擎网站的内容)</span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span> //设置字符集</span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>我的博客<span class="tag">&lt;/<span class="name">title</span>&gt;</span>  //浏览器窗口的标题    </span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    Hello,world!</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span>//主体内容，展示给用户的</span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<h6 id="其他写在body里面的处理文本的标签："><a href="#其他写在body里面的处理文本的标签：" class="headerlink" title="其他写在body里面的处理文本的标签："></a>其他写在body里面的处理文本的标签：</h6></blockquote>
-<p><strong>1、<code>&lt;p&gt;&lt;/p&gt;</code></strong>  段落成段展示:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>燕子去了，有再来的时候；杨柳枯了，有再青的时候；桃花谢了,有再开的时候。但是，聪明的，你告诉我，我们的日子为什么一去不复返呢？——是有人偷了他们罢：那是谁？又藏在何处呢？是他们自己逃走了罢——如今又到了哪里呢？<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>我不知道他们给了我多少日子，但我的手确乎是渐渐空虚了。在默默里算着，八千多日子已经从我手中溜去，像针尖上一滴水滴在大海里，我的日子滴在时间的流里，没有声音，也没有影子。我不禁头涔涔而泪潸潸了。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure><br><strong>2、<code>&lt;h1&gt;&lt;h2&gt;&lt;h3&gt;&lt;h4&gt;&lt;h5&gt;&lt;h6&gt;</code></strong>  标题标签，<code>&lt;h1&gt;</code>     标签最小，<code>&lt;h6&gt;</code>  标签字体最小   </p>
-<p><strong>3、<code>&lt;b&gt;&lt;/b&gt;</code></strong>   字体粗体    </p>
-<p><strong>4、<code>&lt;i&gt;&lt;/i&gt;</code></strong>   字体斜体  </p>
-<p><strong>5、<code>&lt;sup&gt;&lt;/sup&gt;</code></strong> 上标字符 —&gt; <code>E = mc&lt;sup&gt;2&lt;/sup&gt;</code> —&gt;  <script type="math/tex">E = mc^2</script>    </p>
-<p><strong>6、<code>&lt;sub&gt;&lt;/sub&gt;</code></strong>  下标字符   </p>
-<p><strong>7、<code>&lt;br /&gt;</code></strong> 换行标签  </p>
-<h2 id="8、-lt-hr-gt-插入一条水平线-—-gt-如下所示"><a href="#8、-lt-hr-gt-插入一条水平线-—-gt-如下所示" class="headerlink" title="8、&lt;hr/&gt; 插入一条水平线  —&gt;(如下所示)    "></a><strong>8、<code>&lt;hr/&gt;</code></strong> 插入一条水平线  —&gt;(如下所示)    </h2><p><strong>9、<code>&lt;strong&gt;&lt;/strong&gt;</code></strong> 粗体强调         </p>
-<p><strong>10、<code>&lt;em&gt;&lt;/em&gt;</code></strong> 斜体    </p>
-<p><strong>11、<code>&lt;del&gt;&lt;/del&gt;</code></strong> 中划线标签 —&gt;  <del>￥100</del></p>
-<blockquote>
-<h6 id="使用编辑器"><a href="#使用编辑器" class="headerlink" title="使用编辑器"></a>使用编辑器</h6><p>建议使用VS code,创建html文件，用编辑器打开，用（ ! 回车） 可以一键生成基本页面标签内容。编辑后，用浏览器打开html。</p>
-<h2 id="重要且常用的标签"><a href="#重要且常用的标签" class="headerlink" title="重要且常用的标签"></a>重要且常用的标签</h2><h3 id="1、ul-li无序列表"><a href="#1、ul-li无序列表" class="headerlink" title="1、ul  li无序列表"></a>1、ul  li无序列表</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--  经常利用CSS中设置list-style : none;将无序列表前面的小黑点去掉,    </span></span><br><span class="line"><span class="comment">或通过其他属性值设置前面样式--&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="2、img图片标签"><a href="#2、img图片标签" class="headerlink" title="2、img图片标签"></a>2、img图片标签</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">stc</span>=<span class="string">" "</span> <span class="attr">alt</span>=<span class="string">" "</span>  <span class="attr">title</span>=<span class="string">" "</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>src=’’  可引用：<br>    1、网上的url<br>    2、本地的绝对地址<br>    3、本地的相对地址<br>alt=’’(记述图片，地址错误时展示文字信息)<br>title=’’(图片提示符，当鼠标移上去时显示图片信息)   </p>
-</blockquote>
-<h3 id="3、a标签-lt-a-gt-lt-a-gt"><a href="#3、a标签-lt-a-gt-lt-a-gt" class="headerlink" title="3、a标签 &lt;a&gt;&lt;/a&gt;"></a>3、a标签 <code>&lt;a&gt;&lt;/a&gt;</code></h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">" "</span>  <span class="attr">target</span>=<span class="string">"blank"</span>&gt;</span>www.baidu.com<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>href（超文本引用）的属性值为链接、电话号码、邮件地址、某个锚点id值 、协议限定符等<br>target表示另一个标签页面打开网页操作    </p>
-<p>1、放地址，实现超链接<br>2、可做锚点，回到顶部，从目录选择到内容<br>3、打电话发邮件<br>4、协议限定等（发起提示框等功能）<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'demo2'</span> <span class="attr">style</span>=<span class="string">"position:absolute;top:3500px;width:100px;height:100px;background-color: green;"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#demo2"</span>&gt;</span>find demo2<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="4、form表单"><a href="#4、form表单" class="headerlink" title="4、form表单"></a>4、form表单</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">" "</span> <span class="attr">method</span>=<span class="string">"get/post"</span>&gt;</span>  <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>表格标签，发送数据的功能<br>组成元素：method=”get/post” （数据发送方式)<br>action=”  “(发送给谁/发送上传数据)</p>
-<blockquote>
-<h4 id="组件："><a href="#组件：" class="headerlink" title="组件："></a>组件：</h4></blockquote>
-<h5 id="（一）-lt-input-gt-输入框-供用户输入-提交按钮"><a href="#（一）-lt-input-gt-输入框-供用户输入-提交按钮" class="headerlink" title="（一）&lt;input&gt; 输入框;  供用户输入, 提交按钮"></a>（一）<code>&lt;input&gt;</code> 输入框;  供用户输入, 提交按钮</h5><p>属性：1、type（类型）=” “<br>&#8195;&#8195;&#8195;&#8195;text(文本框）/password（密码框）/summit（提交框）/radio(单选框)/checkbox(多选框)/file(文件上传按钮)<br>2、name=”  “(数据名)<br>3、value=”  “（数据值）<br>4、checked=”checked” (已选择框，表示默认选项)<br>5、onfocus=”” (鼠标点击时发生的变化，对焦）<br>6、onblur=””   (鼠标点击外界时发生的变化，失去焦点)<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Username:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span> &gt;</span> <span class="comment">&lt;!--文本框--&gt;</span></span><br><span class="line">Password:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--密码框--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'submit'</span> <span class="attr">name</span>=<span class="string">'subscribe'</span> <span class="attr">value</span> = <span class="string">'Subscribe'</span>&gt;</span> <span class="comment">&lt;!--提交框--&gt;</span></span><br></pre></td></tr></table></figure><br><b>发送数据要一定有两个点： 数据名name跟数据值value </b>  </p>
-<h5 id="（二）-lt-select-gt-lt-select-gt-滑动多选项"><a href="#（二）-lt-select-gt-lt-select-gt-滑动多选项" class="headerlink" title="（二） &lt;select&gt;&lt;/select&gt;  滑动多选项"></a>（二） <code>&lt;select&gt;&lt;/select&gt;</code>  滑动多选项</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span>&gt;</span>1 <span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span>&gt;</span>12 <span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span>&gt;</span>123 <span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span>&gt;</span>1234 <span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span>&gt;</span>12345 <span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h5 id="（三）-lt-button-gt-按钮"><a href="#（三）-lt-button-gt-按钮" class="headerlink" title="（三）&lt;button&gt;按钮"></a>（三）<code>&lt;button&gt;</code>按钮</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>这是一个按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="5、div与span"><a href="#5、div与span" class="headerlink" title="5、div与span"></a>5、div与span</h3><p>div跟span都是没有特性的标签，但是几乎所有元素都会创建div或者span标签，作为一个容器处理。<br>区别：div将文本和元素集中在一个块级元素中，故div标签为一个块级元素标签<br>span标签将文本和元素集中在一个内联元素中，故span标签标签为一个内联元素标签<br><em>ps:<strong>块级元素跟内联元素区别会在CSS文档中介绍</strong></em></p>
-<blockquote>
-<h3 id="id特性跟class特性"><a href="#id特性跟class特性" class="headerlink" title="id特性跟class特性"></a>id特性跟class特性</h3></blockquote>
-<p>每个HTML元素都可以附带一个class属性，class属性可以有多个值<br>每个HTML元素也都可以附带一个id属性，id属性有且只能有一个值，表示该元素的唯一标识。<br>两者的作用是为了方便利用css或javascript中选择并且操作标签</p>
-</p>
-      <div class="post-button"><a class="btn" href="/blog/2020/05/28/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93%20/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
     </div>
-  </div>
-  <div class="lx-entry padding">
-    <div>
-      <h2 class="title"><a href="/blog/2020/05/28/firstblog/">firstblog</a></h2>
-      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-05-28</span>
-      <p><h1 id="Welcome-my-blog"><a href="#Welcome-my-blog" class="headerlink" title="Welcome my blog"></a>Welcome my blog</h1><h2 id="记录一下第一次创建博客，这是深夜凌晨3点，我这就去睡觉了。"><a href="#记录一下第一次创建博客，这是深夜凌晨3点，我这就去睡觉了。" class="headerlink" title="记录一下第一次创建博客，这是深夜凌晨3点，我这就去睡觉了。"></a>记录一下第一次创建博客，这是深夜凌晨3点，我这就去睡觉了。</h2></p>
-      <div class="post-button"><a class="btn" href="/blog/2020/05/28/firstblog/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
-    </div>
-  </div>
+    
 
+    
 
-
-
-<footer>
-  <div>
-  Copyright &copy; 2019.<a href="/blog/">Hexo</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.js.org" target="_blank">Lx</a><br>
+    
   </div>
 </footer>
 
-  </div>
-</div>
-</div>
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/debouncer.js" ></script>
+<script  src="/blog/js/main.js" ></script>
 
-<button class="hamburger hamburger--arrow-r" type="button">
-    <div class="hamburger-box">
-      <div class="hamburger-inner"></div>
-    </div>
-</button> 
-<div class="menu visibility">
-  <div class="menu-head">
-    <span class="layer">
-      <div class="col">
-        <div class="row for-pic">
-          <div class="profile-pic">
-            <a href="/blog/"><img src="/blog/images/avatar.jpeg" alt="John Doe"/></a>
-          </div>
-        </div>
-        <div class="row for-name">
-          <p>John Doe</p>
-          <span class="tagline">Hello, World!</span>
-        </div>
-      </div>
-    </span>
-  </div>
-  <nav class="menu-container">
-  <ul class="menu-items">
-    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
-    <li><a href="/blog/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
-    
-    <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-bookmark fa-fw"></i>Pages</span>
-        <ul>
-          <li><a href="/blog/guestbook/">Guestbook</a></li>
-        <li><a href="/blog/about/">About</a></li>
-        </ul>
-    </li>
-    <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-link fa-fw"></i>Friends</span>
-        <ul>
-          <li> <a href="https://lx.js.org" target="_blank">Theme-Lx</a></li>
-        </ul>
-    </li>
-  </ul>
-  </nav>
-</div>
+<!-- Plugins -->
 
-<div class="gototop js-top">
-  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
-</div>
-<script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/jquery.easing.min.js"></script>
-<script>
-(function () {
-	"use strict";
-	var goToTop = function() {
-		$(".js-gotop").on("click", function(event){
-			event.preventDefault();
-			$("html, body").animate({
-				scrollTop: $("html").offset().top
-			}, 500, "easeInOutExpo");
-			return false;
-		});
-		$(window).scroll(function(){
-			var $win = $(window);
-			if ($win.scrollTop() > 200) {
-				$(".js-top").addClass("active");
-			} else {
-				$(".js-top").removeClass("active");
-			}
-		});
-	};
-	$(function(){
-		goToTop();
-	});
-}());
-</script>
+
+  
+    <script  src="/blog/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/blog/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "An elegant Material-Design theme for Hexo&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+  <script>
+    var path = "/blog/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <script type="text/x-mathjax-config">
