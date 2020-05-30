@@ -162,7 +162,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.6k 字
+      1.7k 字
     </span>
   
 
@@ -230,21 +230,20 @@
     &#125;)
 <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 <p>Vue是<strong>响应式</strong>的，当你在浏览器后台修改<strong>vm.name</strong>的值时，你会看到页面会相对应更新</p>
-<h4 id="2、绑定元素属性-attribute"><a href="#2、绑定元素属性-attribute" class="headerlink" title="2、绑定元素属性(attribute)"></a>2、绑定元素属性(attribute)</h4><h6 id="v-bind"><a href="#v-bind" class="headerlink" title="v-bind"></a>v-bind</h6><pre><code class="hljs v-bind```:attribute">&#96;&#96;&#96;html
-&lt;div id&#x3D;&#39;demo&#39;&gt;
-    &lt;span v-bind:id&#x3D;&#39;id&#39; v-bind:class&#x3D;&#39;[myClass1,myClass2]&#39;&gt;&#123;&#123;name&#125;&#125;&lt;&#x2F;span&gt;
-&lt;&#x2F;div&gt;
-&lt;script&gt;
-    var vm &#x3D; new Vue(&#123;
-        el: &#39;#demo&#39;,   &#x2F;&#x2F;id选择
+<h4 id="2、绑定元素属性-attribute"><a href="#2、绑定元素属性-attribute" class="headerlink" title="2、绑定元素属性(attribute)"></a>2、绑定元素属性(attribute)</h4><h6 id="v-bind"><a href="#v-bind" class="headerlink" title="v-bind"></a>v-bind</h6><p><code>v-bind</code>:attribute  表示给该元素节点的设置上特殊的属性，这样属性值则是一个变量与Vue 实例中保持一致，同样通过修改<strong>vm.myClass</strong>的值可以动态修改标签上Class属性的值<br><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'demo'</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">v-bind:id</span>=<span class="hljs-string">'id'</span> <span class="hljs-attr">v-bind:class</span>=<span class="hljs-string">'[myClass1,myClass2]'</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">    <span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">        el: <span class="hljs-string">'#demo'</span>,   <span class="hljs-comment">//id选择</span></span>
         data: &#123;
-            name: &quot;路飞&quot;,
-            id:&quot;only&quot;,
-            myClass1:&quot;demo1&quot;,
-            myClass2:&quot;demo2&quot;
+<span class="actionscript">            name: <span class="hljs-string">"路飞"</span>,</span>
+<span class="actionscript">            id:<span class="hljs-string">"only"</span>,</span>
+<span class="actionscript">            myClass1:<span class="hljs-string">"demo1"</span>,</span>
+<span class="actionscript">            myClass2:<span class="hljs-string">"demo2"</span></span>
         &#125;
     &#125;)
-&lt;&#x2F;script&gt;</code></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></p>
 <p><img src="https://s1.ax1x.com/2020/05/30/tQxZi4.png" srcset="/blog/img/loading.gif" alt="tQxZi4.png" style="zoom: 80%;" /></p>
 <p>还可以给属性添加上布尔值，当true的时候，添加上该属性值，当false的时候，该属性值消失。</p>
 <pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'demo'</span>&gt;</span>
