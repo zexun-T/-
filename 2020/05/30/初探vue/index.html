@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>鼠标点击冒泡 - ze勋的个人网站</title>
+  <title>初探vue(1) - ze勋的个人网站</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -151,8 +151,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-05-29 23:38">
-      May 29, 2020 pm
+    <time datetime="2020-05-30 21:18">
+      May 30, 2020 pm
     </time>
   </div>
 
@@ -162,7 +162,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      313 字
+      1.6k 字
     </span>
   
 
@@ -172,7 +172,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      22
        分钟
     </span>
   
@@ -211,41 +211,182 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h1 id="鼠标点击冒泡特效小功能"><a href="#鼠标点击冒泡特效小功能" class="headerlink" title="鼠标点击冒泡特效小功能"></a>鼠标点击冒泡特效小功能</h1><h5 id="功能：初步实现当鼠标左键点击的时候，会产生冒泡效果。"><a href="#功能：初步实现当鼠标左键点击的时候，会产生冒泡效果。" class="headerlink" title="功能：初步实现当鼠标左键点击的时候，会产生冒泡效果。"></a>功能：初步实现当鼠标左键点击的时候，会产生冒泡效果。</h5><p>利用原生js点击事件，动态生成DOM节点，通过计时器设置图形冒泡时间。代码如下：</p>
-<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> ohtml = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"html"</span>)[<span class="hljs-number">0</span>]; <span class="hljs-comment">//获取节点</span>
-<span class="hljs-keyword">var</span> obody = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'body'</span>)[<span class="hljs-number">0</span>];
-<span class="hljs-comment">//设置点击事件</span>
-ohtml.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>)</span>&#123;
-    <span class="hljs-keyword">var</span> x = e.pageX;
-    <span class="hljs-keyword">var</span> y = e.pageY;   <span class="hljs-comment">//获取鼠标的点击位置</span>
-    <span class="hljs-keyword">var</span> ele = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>); <span class="hljs-comment">//每当点击的时候动态生成dom节点</span>
-    <span class="hljs-comment">//设置样式</span>
-    ele.style.color = <span class="hljs-string">'red'</span>;
-    ele.style.zIndex = <span class="hljs-string">'999'</span>;
-    ele.style.position = <span class="hljs-string">"absolute"</span>
-    ele.style.userSelect = <span class="hljs-string">'none'</span>; <span class="hljs-comment">//设置不可选中</span>
-    ele.style.fontSize = <span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">10</span> + <span class="hljs-number">25</span> + <span class="hljs-string">"px"</span>;  <span class="hljs-comment">//随机设置文字图形的大小</span>
-    <span class="hljs-comment">//设置图标出现的位置</span>
-    ele.style.left = (x<span class="hljs-number">-10</span>) + <span class="hljs-string">'px'</span>;
-    ele.style.top = (y<span class="hljs-number">-20</span>) + <span class="hljs-string">'px'</span>;
-    <span class="hljs-comment">//将DOM节点插入body中</span>
-    obody.appendChild(ele);
-    <span class="hljs-comment">//添加图形进去</span>
-    ele.innerText = <span class="hljs-string">"♥"</span>
-    <span class="hljs-comment">//设置定时器，计算冒泡消失时间</span>
-    <span class="hljs-keyword">var</span> num = <span class="hljs-number">0</span>;
-    clearInterval(timer);
-    <span class="hljs-keyword">var</span> timer = setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
-        num++;
-        ele.style.top = y <span class="hljs-number">-20</span> - num + <span class="hljs-string">'px'</span>; <span class="hljs-comment">//设置冒泡高度</span>
-        ele.style.opacity = (<span class="hljs-number">150</span>-num)/<span class="hljs-number">120</span>; <span class="hljs-comment">//设置透明度渐变效果</span>
-		<span class="hljs-keyword">if</span> (num == <span class="hljs-number">150</span>) &#123;
-			clearInterval(timer);  <span class="hljs-comment">//清空定时器</span>
-			obody.removeChild(ele);  <span class="hljs-comment">//删除节点</span>
+              <h1 id="Vue-js-学习笔记"><a href="#Vue-js-学习笔记" class="headerlink" title="Vue.js  学习笔记"></a>Vue.js  学习笔记</h1><h3 id="什么是渐进式？"><a href="#什么是渐进式？" class="headerlink" title="什么是渐进式？"></a>什么是渐进式？</h3><p>Vue.js（读音 /vjuː/, 类似于 view） 是一套构建用户界面的<strong>渐进式框架</strong>。渐进式也就是“Progressive”，按照我的理解，渐进就是一步一步的意思，大概的意思应该是框架你可以只用到一部分，而不用把所有的东西都用上。 </p>
+<p>vue采用的是分离的状态：</p>
+<p><img src="https://pic1.zhimg.com/80/v2-cc3ec77bdca6da1a7e276918d894490b_720w.jpg" srcset="/blog/img/loading.gif" alt="img" style="zoom: 80%;" /></p>
+<p>这也就是说，当你的项目比较小比较简单的时候，我们就可以只用核心部分，也就是图中的“Declarative  Rendering”（声明式渲染），跟“Component System ”（组件系统），而后按需加载加载其他部分</p>
+<p>这就是我对渐进式框架的理解，优点在于降低了学习复杂度，也让框架变得比较轻。</p>
+<h3 id="vue的两个核心"><a href="#vue的两个核心" class="headerlink" title="vue的两个核心"></a>vue的两个核心</h3><h4 id="1、响应式的数据绑定"><a href="#1、响应式的数据绑定" class="headerlink" title="1、响应式的数据绑定"></a>1、响应式的数据绑定</h4><p><strong>Vue 的核心库只关注视图层</strong>    以往的数据交互，是我们通过Ajax向服务器请求数据，然后我们通过获取操作DOM节点来改变视图，每次交互数据改变时，又要重新操作，而Vue让我们减去了操作DOM的过程，当数据发生改变时，自动帮我们更新视图。Vue还会双向绑定数据，当你在视图层操作发生改变时，监听变化从而改变其数据内容。（利用了MVVM的思想）</p>
+<p><img src="https://s1.ax1x.com/2020/05/30/tQTgDH.gif" srcset="/blog/img/loading.gif" alt="tQTgDH.gif" style="zoom:67%;" /></p>
+<h4 id="2、视图组件化"><a href="#2、视图组件化" class="headerlink" title="2、视图组件化"></a>2、视图组件化</h4><p><img src="https://cn.vuejs.org/images/components.png" srcset="/blog/img/loading.gif" alt="Component Tree" style="zoom: 50%;" /></p>
+<p>这是一个组件树，通过多个小组件拼接，组成一个大组件，把组件封装起来就形成一个页面。而改变一个小组件，就不会影响其他组件页面。像堆积木一样，互相引用从而组装起来。组件拿出来别的页面也可以使用，实现组件的重复使用，有利于维护。</p>
+<h3 id="开始使用vue"><a href="#开始使用vue" class="headerlink" title="开始使用vue"></a>开始使用vue</h3><h4 id="1、创建实例：-需要已安装好vue-js，并将vue-js引入"><a href="#1、创建实例：-需要已安装好vue-js，并将vue-js引入" class="headerlink" title="1、创建实例：(需要已安装好vue.js，并将vue.js引入)"></a>1、创建实例：(需要已安装好vue.js，并将vue.js引入)</h4><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'demo'</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">    <span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">        el: <span class="hljs-string">'#demo'</span>,   <span class="hljs-comment">//id选择</span></span>
+        data: &#123;
+<span class="actionscript">            name: <span class="hljs-string">"路飞"</span></span>
         &#125;
-    &#125;,<span class="hljs-number">8</span>);<span class="hljs-comment">//每8毫秒 num加1，则冒泡出现的时间为1.2秒</span>
-&#125;</code></pre>
-<h4 id="效果图如图所示："><a href="#效果图如图所示：" class="headerlink" title="效果图如图所示："></a>效果图如图所示：</h4><p><img src="https://s1.ax1x.com/2020/05/30/tKyYee.gif" srcset="/blog/img/loading.gif" alt="tKyYee.gif"></p>
+    &#125;)
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<p>Vue是<strong>响应式</strong>的，当你在浏览器后台修改<strong>vm.name</strong>的值时，你会看到页面会相对应更新</p>
+<h4 id="2、绑定元素属性-attribute"><a href="#2、绑定元素属性-attribute" class="headerlink" title="2、绑定元素属性(attribute)"></a>2、绑定元素属性(attribute)</h4><h6 id="v-bind"><a href="#v-bind" class="headerlink" title="v-bind"></a>v-bind</h6><pre><code class="hljs v-bind```:attribute">
+&#96;&#96;&#96;html
+&lt;div id&#x3D;&#39;demo&#39;&gt;
+    &lt;span v-bind:id&#x3D;&#39;id&#39; v-bind:class&#x3D;&#39;[myClass1,myClass2]&#39;&gt;&#123;&#123;name&#125;&#125;&lt;&#x2F;span&gt;
+&lt;&#x2F;div&gt;
+&lt;script&gt;
+    var vm &#x3D; new Vue(&#123;
+        el: &#39;#demo&#39;,   &#x2F;&#x2F;id选择
+        data: &#123;
+            name: &quot;路飞&quot;,
+            id:&quot;only&quot;,
+            myClass1:&quot;demo1&quot;,
+            myClass2:&quot;demo2&quot;
+        &#125;
+    &#125;)
+&lt;&#x2F;script&gt;</code></pre>
+<p><img src="https://s1.ax1x.com/2020/05/30/tQxZi4.png" srcset="/blog/img/loading.gif" alt="tQxZi4.png" style="zoom: 80%;" /></p>
+<p>还可以给属性添加上布尔值，当true的时候，添加上该属性值，当false的时候，该属性值消失。</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'demo'</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">v-bind:class</span>=<span class="hljs-string">'&#123;demo1:ifClass&#125;'</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">    <span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">        el: <span class="hljs-string">'#demo'</span>,   <span class="hljs-comment">//id选择</span></span>
+        data: &#123;
+<span class="actionscript">            name: <span class="hljs-string">"路飞"</span>,</span>
+<span class="actionscript">            ifClass:<span class="hljs-literal">true</span>  <span class="hljs-comment">//当false的时候，该属性值消失</span></span>
+        &#125;
+    &#125;)
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<h6 id="v-if-跟-v-show"><a href="#v-if-跟-v-show" class="headerlink" title="v-if 跟 v-show"></a>v-if 跟 v-show</h6><pre><code class="hljs v-if```是用来控制切换元素的显示消失功能（false时直接删除DOM节点）">
+&#96;&#96;&#96;html
+&lt;div id&#x3D;&#39;demo&#39;&gt;
+    &lt;span v-if&#x3D;&quot;ifseen&quot;&gt;&#123;&#123;name&#125;&#125;&lt;&#x2F;span&gt;
+&lt;&#x2F;div&gt;
+&lt;script&gt;
+    var vm &#x3D; new Vue(&#123;
+        el: &#39;#demo&#39;,   &#x2F;&#x2F;id选择
+        data: &#123;
+            name: &quot;路飞&quot;,
+            ifseen:true  &#x2F;&#x2F;false的时候，直接删除DOM节点
+        &#125;
+    &#125;)
+&lt;&#x2F;script&gt;</code></pre>
+<pre><code class="hljs v-show```也是用来控制切换元素的显示消失功能，与v-if不同的是，v-show是通过设置属性">
+&#96;&#96;&#96;html
+&lt;div id&#x3D;&#39;demo&#39;&gt;
+    &lt;span v-show&#x3D;&quot;ifseen&quot;&gt;&#123;&#123;name&#125;&#125;&lt;&#x2F;span&gt;
+&lt;&#x2F;div&gt;
+&lt;script&gt;
+    var vm &#x3D; new Vue(&#123;
+        el: &#39;#demo&#39;,   &#x2F;&#x2F;id选择
+        data: &#123;
+            name: &quot;路飞&quot;,
+            ifseen:true  &#x2F;&#x2F;false的时候，设置display:none;
+        &#125;
+    &#125;)
+&lt;&#x2F;script&gt;</code></pre>
+<p>如果频繁需要显示消失功能，那么就采用<code>v-show</code>的方式，而<code>v-if</code>是直接通过添加删除子节点的方法，会进行重排重绘，耗费性能</p>
+<p>如果不频繁的话，使用<code>v-if</code>更好，因为false时没有DOM节点，初始化时不用加载</p>
+<h6 id="v-for"><a href="#v-for" class="headerlink" title="v-for"></a>v-for</h6><pre><code class="hljs v-for```是用来绑定数组中一堆数据来渲染一个列表，可与```<ul><li></li></ul>```标签配合使用">
+&#96;&#96;&#96;html
+&lt;ul id&#x3D;&quot;only&quot;&gt;
+    &lt;li v-for &#x3D;&quot;item to list&quot;&gt;&#123;&#123;item.fruit&#125;&#125;&lt;&#x2F;li&gt;  &lt;!--item遍历数组list的值--&gt;
+&lt;&#x2F;ul&gt;
+&lt;script&gt;
+    var vm &#x3D; new Vue(&#123;
+        el: &#39;#only&#39;,   &#x2F;&#x2F;id选择
+        data: &#123;
+            list:[&#123;fruit:&quot;苹果&quot;&#125;,&#123;fruit:&quot;香蕉&quot;&#125;,&#123;fruit:&quot;橙子&quot;&#125;]
+        &#125;
+    &#125;)
+&lt;&#x2F;script&gt;</code></pre>
+<h6 id="v-on"><a href="#v-on" class="headerlink" title="v-on"></a>v-on</h6><pre><code class="hljs v-on```:event">
+&#96;&#96;&#96;v-on:click</code></pre>
+<p><img src="https://s1.ax1x.com/2020/05/31/tlFJxg.gif" srcset="/blog/img/loading.gif" alt="tlFJxg.gif"></p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'demo'</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span> = <span class="hljs-string">"cli"</span>&gt;</span>点击<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">    <span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">        el: <span class="hljs-string">'#demo'</span>,   <span class="hljs-comment">//id选择</span></span>
+        data:&#123;
+<span class="actionscript">        	name:<span class="hljs-string">'路飞'</span></span>
+    	&#125;,
+<span class="actionscript">        methods:&#123;                        <span class="hljs-comment">//创建methods对象，定义触发事件函数</span></span>
+<span class="actionscript">            cli:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;</span>
+<span class="actionscript">                vm.name = <span class="hljs-string">'鸣人'</span></span>
+            &#125;
+        &#125;
+    &#125;)
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<pre><code class="hljs v-on:keyup```（效果图为上文第一张动态图）">
+&#96;&#96;&#96;v-on:keyup.enter&#96;&#96;&#96;表示只有按起回车键，才会执行事件
+
+&#96;&#96;&#96;v-model&#96;&#96;&#96;用来显示input输入框中的初始值
+
+&#96;&#96;&#96;html
+&lt;div id&#x3D;&#39;demo&#39;&gt;
+    &lt;span&gt;&#123;&#123;message&#125;&#125;&lt;&#x2F;span&gt;
+    &lt;input type&#x3D;&quot;text&quot; v-model&#x3D;&quot;message&quot; v-on:keyup&#x3D;&quot;keyup&quot; style&#x3D;&quot;height:30px&quot;&gt;
+&lt;&#x2F;div&gt;
+&lt;script&gt;
+    var vm &#x3D; new Vue(&#123;
+        el: &#39;#demo&#39;,
+        data: &#123;
+            message: &quot;Hello,world!&quot;
+        &#125;,
+        methods:&#123;
+            keyup:function()&#123;
+                vm.message &#x3D; this.value,
+                console.log(this.value)
+            &#125;
+        &#125;
+    &#125;)
+&lt;&#x2F;script&gt;</code></pre>
+<h4 id="3、生命周期"><a href="#3、生命周期" class="headerlink" title="3、生命周期"></a>3、生命周期</h4><h6 id="生命周期钩子"><a href="#生命周期钩子" class="headerlink" title="生命周期钩子"></a>生命周期钩子</h6><p>生命周期钩子的函数，是用于不同阶段添加自己的代码的机会</p>
+<p>挂载：我理解的挂载，是通过new Vue()语句创建的对象后，没有执行没有渲染，而是放到HTML文档中，这个过程就是挂载，我也找不到权威的解释，这样一来可能解释得通，通过Ajax请求出来数据后，把数据插进去，再一起挂载到HTML文档中执行渲染，此时DOM元素被vm.$el替换</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>生命周期钩子函数</th>
+<th>作用时间顺序</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>beforeCreate : function(…){…}</td>
+<td>实例初始化之后执行的函数，即整个页面创建之前执行</td>
+</tr>
+<tr>
+<td>created : function(…){…}</td>
+<td>实例初始化数据（data数据绑定，v-on事件绑定）之后，调用的函数，此时挂载阶段还没开始 <br>一般函数内容为Ajax请求</td>
+</tr>
+<tr>
+<td>beforeMount : function(…){…}</td>
+<td>在挂载开始之前被调用，相关渲染函数首次被调用</td>
+</tr>
+<tr>
+<td>Mounted : function(…){…}</td>
+<td>挂载成功后被调用<br>DOM元素被vm.$el替换<br>实例激活，监听beforeUpdate跟update</td>
+</tr>
+<tr>
+<td>beforeUpdate : function(…){…}</td>
+<td>数据更新时调用</td>
+</tr>
+<tr>
+<td>update : function(…){…}</td>
+<td>DOM已经更新，组件更新完毕后调用</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>引用官方文档生命周期图示：</p>
+<p><img src="https://cn.vuejs.org/images/lifecycle.png" srcset="/blog/img/loading.gif" alt="Vue å®ä¾çå½å¨æ" style="zoom: 50%;" /></p>
 
             </article>
             <hr>
@@ -256,7 +397,7 @@ ohtml.onclick = <span class="hljs-function"><span class="hljs-keyword">function<
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/blog/tags/%E5%8D%B3%E6%83%B3%E5%8D%B3%E5%81%9A%E7%9A%84%E5%B0%8F%E7%BB%84%E4%BB%B6/">即想即做的小组件</a>
+                      <a class="hover-with-bg" href="/blog/tags/vue%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/">vue框架学习</a>
                     
                   </div>
                 
@@ -269,18 +410,12 @@ ohtml.onclick = <span class="hljs-function"><span class="hljs-keyword">function<
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/blog/2020/05/30/%E5%88%9D%E6%8E%A2vue/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">初探vue(1)</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-6">
                     
                     
-                      <a href="/blog/2020/05/29/second/">
-                        <span class="hidden-mobile">学习笔记总结 --html篇</span>
+                      <a href="/blog/2020/05/29/demo1/">
+                        <span class="hidden-mobile">鼠标点击冒泡</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -435,7 +570,7 @@ ohtml.onclick = <span class="hljs-function"><span class="hljs-keyword">function<
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "鼠标点击冒泡&nbsp;",
+        "初探vue(1)&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
