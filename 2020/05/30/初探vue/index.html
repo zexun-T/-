@@ -230,8 +230,7 @@
     &#125;)
 <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 <p>Vue是<strong>响应式</strong>的，当你在浏览器后台修改<strong>vm.name</strong>的值时，你会看到页面会相对应更新</p>
-<h4 id="2、绑定元素属性-attribute"><a href="#2、绑定元素属性-attribute" class="headerlink" title="2、绑定元素属性(attribute)"></a>2、绑定元素属性(attribute)</h4><h6 id="v-bind"><a href="#v-bind" class="headerlink" title="v-bind"></a>v-bind</h6><pre><code class="hljs v-bind```:attribute">
-&#96;&#96;&#96;html
+<h4 id="2、绑定元素属性-attribute"><a href="#2、绑定元素属性-attribute" class="headerlink" title="2、绑定元素属性(attribute)"></a>2、绑定元素属性(attribute)</h4><h6 id="v-bind"><a href="#v-bind" class="headerlink" title="v-bind"></a>v-bind</h6><pre><code class="hljs v-bind```:attribute">&#96;&#96;&#96;html
 &lt;div id&#x3D;&#39;demo&#39;&gt;
     &lt;span v-bind:id&#x3D;&#39;id&#39; v-bind:class&#x3D;&#39;[myClass1,myClass2]&#39;&gt;&#123;&#123;name&#125;&#125;&lt;&#x2F;span&gt;
 &lt;&#x2F;div&gt;
@@ -260,8 +259,7 @@
         &#125;
     &#125;)
 <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
-<h6 id="v-if-跟-v-show"><a href="#v-if-跟-v-show" class="headerlink" title="v-if 跟 v-show"></a>v-if 跟 v-show</h6><pre><code class="hljs v-if```是用来控制切换元素的显示消失功能（false时直接删除DOM节点）">
-&#96;&#96;&#96;html
+<h6 id="v-if-跟-v-show"><a href="#v-if-跟-v-show" class="headerlink" title="v-if 跟 v-show"></a>v-if 跟 v-show</h6><pre><code class="hljs v-if```是用来控制切换元素的显示消失功能（false时直接删除DOM节点）">&#96;&#96;&#96;html
 &lt;div id&#x3D;&#39;demo&#39;&gt;
     &lt;span v-if&#x3D;&quot;ifseen&quot;&gt;&#123;&#123;name&#125;&#125;&lt;&#x2F;span&gt;
 &lt;&#x2F;div&gt;
@@ -274,8 +272,7 @@
         &#125;
     &#125;)
 &lt;&#x2F;script&gt;</code></pre>
-<pre><code class="hljs v-show```也是用来控制切换元素的显示消失功能，与v-if不同的是，v-show是通过设置属性">
-&#96;&#96;&#96;html
+<pre><code class="hljs v-show```也是用来控制切换元素的显示消失功能，与v-if不同的是，v-show是通过设置属性">&#96;&#96;&#96;html
 &lt;div id&#x3D;&#39;demo&#39;&gt;
     &lt;span v-show&#x3D;&quot;ifseen&quot;&gt;&#123;&#123;name&#125;&#125;&lt;&#x2F;span&gt;
 &lt;&#x2F;div&gt;
@@ -290,8 +287,7 @@
 &lt;&#x2F;script&gt;</code></pre>
 <p>如果频繁需要显示消失功能，那么就采用<code>v-show</code>的方式，而<code>v-if</code>是直接通过添加删除子节点的方法，会进行重排重绘，耗费性能</p>
 <p>如果不频繁的话，使用<code>v-if</code>更好，因为false时没有DOM节点，初始化时不用加载</p>
-<h6 id="v-for"><a href="#v-for" class="headerlink" title="v-for"></a>v-for</h6><pre><code class="hljs v-for```是用来绑定数组中一堆数据来渲染一个列表，可与```<ul><li></li></ul>```标签配合使用">
-&#96;&#96;&#96;html
+<h6 id="v-for"><a href="#v-for" class="headerlink" title="v-for"></a>v-for</h6><pre><code class="hljs v-for```是用来绑定数组中一堆数据来渲染一个列表，可与```<ul><li></li></ul>```标签配合使用">&#96;&#96;&#96;html
 &lt;ul id&#x3D;&quot;only&quot;&gt;
     &lt;li v-for &#x3D;&quot;item to list&quot;&gt;&#123;&#123;item.fruit&#125;&#125;&lt;&#x2F;li&gt;  &lt;!--item遍历数组list的值--&gt;
 &lt;&#x2F;ul&gt;
@@ -303,10 +299,8 @@
         &#125;
     &#125;)
 &lt;&#x2F;script&gt;</code></pre>
-<h6 id="v-on"><a href="#v-on" class="headerlink" title="v-on"></a>v-on</h6><pre><code class="hljs v-on```:event">
-&#96;&#96;&#96;v-on:click</code></pre>
-<p><img src="https://s1.ax1x.com/2020/05/31/tlFJxg.gif" srcset="/blog/img/loading.gif" alt="tlFJxg.gif"></p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'demo'</span>&gt;</span>
+<h6 id="v-on"><a href="#v-on" class="headerlink" title="v-on"></a>v-on</h6><pre><code class="hljs v-on```:event">&#96;&#96;&#96;v-on:click</code></pre>
+<p><img src="https://s1.ax1x.com/2020/05/31/tlFJxg.gif" srcset="/blog/img/loading.gif" alt="tlFJxg.gif"><br><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'demo'</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span> = <span class="hljs-string">"cli"</span>&gt;</span>点击<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -322,12 +316,11 @@
             &#125;
         &#125;
     &#125;)
-<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></p>
 <pre><code class="hljs v-on:keyup```（效果图为上文第一张动态图）">
 &#96;&#96;&#96;v-on:keyup.enter&#96;&#96;&#96;表示只有按起回车键，才会执行事件
 
 &#96;&#96;&#96;v-model&#96;&#96;&#96;用来显示input输入框中的初始值
-
 &#96;&#96;&#96;html
 &lt;div id&#x3D;&#39;demo&#39;&gt;
     &lt;span&gt;&#123;&#123;message&#125;&#125;&lt;&#x2F;span&gt;
