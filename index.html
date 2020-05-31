@@ -519,7 +519,14 @@ HTML标签：实例：&lt;html lang="en"&gt;   &lt;!--根标签，lang是属性�
 
 
 
-
+<script>
+  (function(){
+      var bp = document.createElement('script');
+      bp.src = '//push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();
+</script>
 
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
