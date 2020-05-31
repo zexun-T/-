@@ -13,10 +13,10 @@
     <meta name="description" content="Vue.js  学习笔记什么是渐进式？Vue.js（读音 /vjuː/, 类似于 view） 是一套构建用户界面的渐进式框架。渐进式也就是“Progressive”，按照我的理解，渐进就是一步一步的,"> 
     <meta name="author" content="John Doe"> 
     <link rel="alternative" href="atom.xml" title="ze勋的个人网站" type="application/atom+xml"> 
-    <link rel="icon" href="zexun-t.xyz/img/favicon.png"> 
+    <link rel="icon" href="/blog/img/favicon.png"> 
     
     
-<link rel="stylesheet" href="zexun-t.xyz/css/diaspora.css">
+<link rel="stylesheet" href="/blog/css/diaspora.css">
 
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
@@ -36,7 +36,7 @@
     <div id="single">
     <div id="top" style="display: block;">
     <div class="bar" style="width: 0;"></div>
-    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://zexun-t.xyz/blog"></a>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://zexun-t.xyz"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
     <h3 class="subtitle">初探vue(1)</h3>
     <div class="social">
@@ -57,132 +57,35 @@
         <div class="stuff">
             <span>五月 30, 2020</span>
             
-  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="zexun-t.xyz/tags/vue%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/" rel="tag">vue框架学习</a></li></ul>
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/blog/tags/vue%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/" rel="tag">vue框架学习</a></li></ul>
 
 
         </div>
         <div class="content markdown">
             <h1 id="Vue-js-学习笔记"><a href="#Vue-js-学习笔记" class="headerlink" title="Vue.js  学习笔记"></a>Vue.js  学习笔记</h1><h3 id="什么是渐进式？"><a href="#什么是渐进式？" class="headerlink" title="什么是渐进式？"></a>什么是渐进式？</h3><p>Vue.js（读音 /vjuː/, 类似于 view） 是一套构建用户界面的<strong>渐进式框架</strong>。渐进式也就是“Progressive”，按照我的理解，渐进就是一步一步的意思，大概的意思应该是框架你可以只用到一部分，而不用把所有的东西都用上。 </p>
 <p>vue采用的是分离的状态：</p>
-<p><img src="https://pic1.zhimg.com/80/v2-cc3ec77bdca6da1a7e276918d894490b_720w.jpg" srcset="zexun-t.xyz/img/loading.gif" alt="img" style="zoom: 80%;" /></p>
+<p><img src="https://pic1.zhimg.com/80/v2-cc3ec77bdca6da1a7e276918d894490b_720w.jpg" alt="img" style="zoom: 80%;" /></p>
 <p>这也就是说，当你的项目比较小比较简单的时候，我们就可以只用核心部分，也就是图中的“Declarative  Rendering”（声明式渲染），跟“Component System ”（组件系统），而后按需加载加载其他部分</p>
 <p>这就是我对渐进式框架的理解，优点在于降低了学习复杂度，也让框架变得比较轻。</p>
 <h3 id="vue的两个核心"><a href="#vue的两个核心" class="headerlink" title="vue的两个核心"></a>vue的两个核心</h3><h4 id="1、响应式的数据绑定"><a href="#1、响应式的数据绑定" class="headerlink" title="1、响应式的数据绑定"></a>1、响应式的数据绑定</h4><p><strong>Vue 的核心库只关注视图层</strong>    以往的数据交互，是我们通过Ajax向服务器请求数据，然后我们通过获取操作DOM节点来改变视图，每次交互数据改变时，又要重新操作，而Vue让我们减去了操作DOM的过程，当数据发生改变时，自动帮我们更新视图。Vue还会双向绑定数据，当你在视图层操作发生改变时，监听变化从而改变其数据内容。（利用了MVVM的思想）</p>
-<p><img src="https://s1.ax1x.com/2020/05/30/tQTgDH.gif" srcset="zexun-t.xyz/img/loading.gif" alt="tQTgDH.gif" style="zoom:67%;" /></p>
-<h4 id="2、视图组件化"><a href="#2、视图组件化" class="headerlink" title="2、视图组件化"></a>2、视图组件化</h4><p><img src="https://cn.vuejs.org/images/components.png" srcset="zexun-t.xyz/img/loading.gif" alt="Component Tree" style="zoom: 50%;" /></p>
+<p><img src="https://s1.ax1x.com/2020/05/30/tQTgDH.gif" alt="tQTgDH.gif" style="zoom:67%;" /></p>
+<h4 id="2、视图组件化"><a href="#2、视图组件化" class="headerlink" title="2、视图组件化"></a>2、视图组件化</h4><p><img src="https://cn.vuejs.org/images/components.png" alt="Component Tree" style="zoom: 50%;" /></p>
 <p>这是一个组件树，通过多个小组件拼接，组成一个大组件，把组件封装起来就形成一个页面。而改变一个小组件，就不会影响其他组件页面。像堆积木一样，互相引用从而组装起来。组件拿出来别的页面也可以使用，实现组件的重复使用，有利于维护。</p>
-<h3 id="开始使用vue"><a href="#开始使用vue" class="headerlink" title="开始使用vue"></a>开始使用vue</h3><h4 id="1、创建实例：-需要已安装好vue-js，并将vue-js引入"><a href="#1、创建实例：-需要已安装好vue-js，并将vue-js引入" class="headerlink" title="1、创建实例：(需要已安装好vue.js，并将vue.js引入)"></a>1、创建实例：(需要已安装好vue.js，并将vue.js引入)</h4><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'demo'</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
-<span class="actionscript">    <span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span>
-<span class="actionscript">        el: <span class="hljs-string">'#demo'</span>,   <span class="hljs-comment">//id选择</span></span>
-        data: &#123;
-<span class="actionscript">            name: <span class="hljs-string">"路飞"</span></span>
-        &#125;
-    &#125;)
-<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<h3 id="开始使用vue"><a href="#开始使用vue" class="headerlink" title="开始使用vue"></a>开始使用vue</h3><h4 id="1、创建实例：-需要已安装好vue-js，并将vue-js引入"><a href="#1、创建实例：-需要已安装好vue-js，并将vue-js引入" class="headerlink" title="1、创建实例：(需要已安装好vue.js，并将vue.js引入)"></a>1、创建实例：(需要已安装好vue.js，并将vue.js引入)</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'demo'</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">        el: <span class="string">'#demo'</span>,   <span class="comment">//id选择</span></span></span><br><span class="line">        data: &#123;</span><br><span class="line"><span class="actionscript">            name: <span class="string">"路飞"</span></span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>Vue是<strong>响应式</strong>的，当你在浏览器后台修改<strong>vm.name</strong>的值时，你会看到页面会相对应更新</p>
-<h4 id="2、绑定元素属性-attribute"><a href="#2、绑定元素属性-attribute" class="headerlink" title="2、绑定元素属性(attribute)"></a>2、绑定元素属性(attribute)</h4><h6 id="v-bind"><a href="#v-bind" class="headerlink" title="v-bind"></a>v-bind</h6><p><code>v-bind</code>:attribute  表示给该元素节点的设置上特殊的属性，这样属性值则是一个变量与Vue 实例中保持一致，同样通过修改<strong>vm.myClass</strong>的值可以动态修改标签上Class属性的值<br><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'demo'</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">v-bind:id</span>=<span class="hljs-string">'id'</span> <span class="hljs-attr">v-bind:class</span>=<span class="hljs-string">'[myClass1,myClass2]'</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
-<span class="actionscript">    <span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span>
-<span class="actionscript">        el: <span class="hljs-string">'#demo'</span>,   <span class="hljs-comment">//id选择</span></span>
-        data: &#123;
-<span class="actionscript">            name: <span class="hljs-string">"路飞"</span>,</span>
-<span class="actionscript">            id:<span class="hljs-string">"only"</span>,</span>
-<span class="actionscript">            myClass1:<span class="hljs-string">"demo1"</span>,</span>
-<span class="actionscript">            myClass2:<span class="hljs-string">"demo2"</span></span>
-        &#125;
-    &#125;)
-<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></p>
-<p><img src="https://s1.ax1x.com/2020/05/30/tQxZi4.png" srcset="zexun-t.xyz/img/loading.gif" alt="tQxZi4.png" style="zoom: 80%;" /></p>
+<h4 id="2、绑定元素属性-attribute"><a href="#2、绑定元素属性-attribute" class="headerlink" title="2、绑定元素属性(attribute)"></a>2、绑定元素属性(attribute)</h4><h6 id="v-bind"><a href="#v-bind" class="headerlink" title="v-bind"></a>v-bind</h6><p><code>v-bind</code>:attribute  表示给该元素节点的设置上特殊的属性，这样属性值则是一个变量与Vue 实例中保持一致，同样通过修改<strong>vm.myClass</strong>的值可以动态修改标签上Class属性的值<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'demo'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">v-bind:id</span>=<span class="string">'id'</span> <span class="attr">v-bind:class</span>=<span class="string">'[myClass1,myClass2]'</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">        el: <span class="string">'#demo'</span>,   <span class="comment">//id选择</span></span></span><br><span class="line">        data: &#123;</span><br><span class="line"><span class="actionscript">            name: <span class="string">"路飞"</span>,</span></span><br><span class="line"><span class="actionscript">            id:<span class="string">"only"</span>,</span></span><br><span class="line"><span class="actionscript">            myClass1:<span class="string">"demo1"</span>,</span></span><br><span class="line"><span class="actionscript">            myClass2:<span class="string">"demo2"</span></span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="https://s1.ax1x.com/2020/05/30/tQxZi4.png" alt="tQxZi4.png" style="zoom: 80%;" /></p>
 <p>还可以给属性添加上布尔值，当true的时候，添加上该属性值，当false的时候，该属性值消失。</p>
-<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'demo'</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">v-bind:class</span>=<span class="hljs-string">'&#123;demo1:ifClass&#125;'</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
-<span class="actionscript">    <span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span>
-<span class="actionscript">        el: <span class="hljs-string">'#demo'</span>,   <span class="hljs-comment">//id选择</span></span>
-        data: &#123;
-<span class="actionscript">            name: <span class="hljs-string">"路飞"</span>,</span>
-<span class="actionscript">            ifClass:<span class="hljs-literal">true</span>  <span class="hljs-comment">//当false的时候，该属性值消失</span></span>
-        &#125;
-    &#125;)
-<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
-<h6 id="v-if-跟-v-show"><a href="#v-if-跟-v-show" class="headerlink" title="v-if 跟 v-show"></a>v-if 跟 v-show</h6><p><code>v-if</code>是用来控制切换元素的显示消失功能（false时直接删除DOM节点）<br><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'demo'</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">"ifseen"</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
-<span class="actionscript">    <span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span>
-<span class="actionscript">        el: <span class="hljs-string">'#demo'</span>,   <span class="hljs-comment">//id选择</span></span>
-        data: &#123;
-<span class="actionscript">            name: <span class="hljs-string">"路飞"</span>,</span>
-<span class="actionscript">            ifseen:<span class="hljs-literal">true</span>  <span class="hljs-comment">//false的时候，直接删除DOM节点</span></span>
-        &#125;
-    &#125;)
-<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre><br><code>v-show</code>也是用来控制切换元素的显示消失功能，与v-if不同的是，v-show是通过设置属性 display 来控制元素的显示与消失<br><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'demo'</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">v-show</span>=<span class="hljs-string">"ifseen"</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
-<span class="actionscript">    <span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span>
-<span class="actionscript">        el: <span class="hljs-string">'#demo'</span>,   <span class="hljs-comment">//id选择</span></span>
-        data: &#123;
-<span class="actionscript">            name: <span class="hljs-string">"路飞"</span>,</span>
-<span class="actionscript">            ifseen:<span class="hljs-literal">true</span>  <span class="hljs-comment">//false的时候，设置display:none;</span></span>
-        &#125;
-    &#125;)
-<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'demo'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">v-bind:class</span>=<span class="string">'&#123;demo1:ifClass&#125;'</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">        el: <span class="string">'#demo'</span>,   <span class="comment">//id选择</span></span></span><br><span class="line">        data: &#123;</span><br><span class="line"><span class="actionscript">            name: <span class="string">"路飞"</span>,</span></span><br><span class="line"><span class="actionscript">            ifClass:<span class="literal">true</span>  <span class="comment">//当false的时候，该属性值消失</span></span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h6 id="v-if-跟-v-show"><a href="#v-if-跟-v-show" class="headerlink" title="v-if 跟 v-show"></a>v-if 跟 v-show</h6><p><code>v-if</code>是用来控制切换元素的显示消失功能（false时直接删除DOM节点）<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'demo'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">v-if</span>=<span class="string">"ifseen"</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">        el: <span class="string">'#demo'</span>,   <span class="comment">//id选择</span></span></span><br><span class="line">        data: &#123;</span><br><span class="line"><span class="actionscript">            name: <span class="string">"路飞"</span>,</span></span><br><span class="line"><span class="actionscript">            ifseen:<span class="literal">true</span>  <span class="comment">//false的时候，直接删除DOM节点</span></span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure><br><code>v-show</code>也是用来控制切换元素的显示消失功能，与v-if不同的是，v-show是通过设置属性 display 来控制元素的显示与消失<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'demo'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">v-show</span>=<span class="string">"ifseen"</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">        el: <span class="string">'#demo'</span>,   <span class="comment">//id选择</span></span></span><br><span class="line">        data: &#123;</span><br><span class="line"><span class="actionscript">            name: <span class="string">"路飞"</span>,</span></span><br><span class="line"><span class="actionscript">            ifseen:<span class="literal">true</span>  <span class="comment">//false的时候，设置display:none;</span></span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>如果频繁需要显示消失功能，那么就采用<code>v-show</code>的方式，而<code>v-if</code>是直接通过添加删除子节点的方法，会进行重排重绘，耗费性能</p>
 <p>如果不频繁的话，使用<code>v-if</code>更好，因为false时没有DOM节点，初始化时不用加载</p>
-<h6 id="v-for"><a href="#v-for" class="headerlink" title="v-for"></a>v-for</h6><p><code>v-for</code>是用来绑定数组中一堆数据来渲染一个列表，可与<code>&lt;ul&gt;&lt;li&gt;&lt;/li&gt;&lt;/ul&gt;</code>标签配合使用<br><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"only"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span> =<span class="hljs-string">"item to list"</span>&gt;</span>&#123;&#123;item.fruit&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>  <span class="hljs-comment">&lt;!--item遍历数组list的值--&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
-<span class="actionscript">    <span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span>
-<span class="actionscript">        el: <span class="hljs-string">'#only'</span>,   <span class="hljs-comment">//id选择</span></span>
-        data: &#123;
-<span class="actionscript">            list:[&#123;fruit:<span class="hljs-string">"苹果"</span>&#125;,&#123;fruit:<span class="hljs-string">"香蕉"</span>&#125;,&#123;fruit:<span class="hljs-string">"橙子"</span>&#125;]</span>
-        &#125;
-    &#125;)
-<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></p>
+<h6 id="v-for"><a href="#v-for" class="headerlink" title="v-for"></a>v-for</h6><p><code>v-for</code>是用来绑定数组中一堆数据来渲染一个列表，可与<code>&lt;ul&gt;&lt;li&gt;&lt;/li&gt;&lt;/ul&gt;</code>标签配合使用<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"only"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span> =<span class="string">"item to list"</span>&gt;</span>&#123;&#123;item.fruit&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span>  <span class="comment">&lt;!--item遍历数组list的值--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">        el: <span class="string">'#only'</span>,   <span class="comment">//id选择</span></span></span><br><span class="line">        data: &#123;</span><br><span class="line"><span class="actionscript">            list:[&#123;fruit:<span class="string">"苹果"</span>&#125;,&#123;fruit:<span class="string">"香蕉"</span>&#125;,&#123;fruit:<span class="string">"橙子"</span>&#125;]</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <h6 id="v-on"><a href="#v-on" class="headerlink" title="v-on"></a>v-on</h6><p><code>v-on</code>:event 是用来添加事件监听的，让用户有交互效果<br><code>v-on:click</code></p>
-<p><img src="https://s1.ax1x.com/2020/05/31/tlFJxg.gif" srcset="zexun-t.xyz/img/loading.gif" alt="tlFJxg.gif"><br><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'demo'</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span> = <span class="hljs-string">"cli"</span>&gt;</span>点击<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
-<span class="actionscript">    <span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span>
-<span class="actionscript">        el: <span class="hljs-string">'#demo'</span>,   <span class="hljs-comment">//id选择</span></span>
-        data:&#123;
-<span class="actionscript">        	name:<span class="hljs-string">'路飞'</span></span>
-    	&#125;,
-<span class="actionscript">        methods:&#123;                        <span class="hljs-comment">//创建methods对象，定义触发事件函数</span></span>
-<span class="actionscript">            cli:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;</span>
-<span class="actionscript">                vm.name = <span class="hljs-string">'鸣人'</span></span>
-            &#125;
-        &#125;
-    &#125;)
-<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></p>
+<p><img src="https://s1.ax1x.com/2020/05/31/tlFJxg.gif" alt="tlFJxg.gif"><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'demo'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span> = <span class="string">"cli"</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">        el: <span class="string">'#demo'</span>,   <span class="comment">//id选择</span></span></span><br><span class="line">        data:&#123;</span><br><span class="line"><span class="actionscript">        	name:<span class="string">'路飞'</span></span></span><br><span class="line">    	&#125;,</span><br><span class="line"><span class="actionscript">        methods:&#123;                        <span class="comment">//创建methods对象，定义触发事件函数</span></span></span><br><span class="line"><span class="actionscript">            cli:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">                vm.name = <span class="string">'鸣人'</span></span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p><code>v-on:keyup</code>（效果图为上文第一张动态图）</p>
 <p><code>v-on:keyup.enter</code>表示只有按起回车键，才会执行事件</p>
-<p><code>v-model</code>用来显示input输入框中的初始值<br><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'demo'</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">"message"</span> <span class="hljs-attr">v-on:keyup</span>=<span class="hljs-string">"keyup"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"height:30px"</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
-<span class="actionscript">    <span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span>
-<span class="actionscript">        el: <span class="hljs-string">'#demo'</span>,</span>
-        data: &#123;
-<span class="actionscript">            message: <span class="hljs-string">"Hello,world!"</span></span>
-        &#125;,
-        methods:&#123;
-<span class="actionscript">            keyup:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;</span>
-<span class="actionscript">                vm.message = <span class="hljs-keyword">this</span>.value,</span>
-<span class="javascript">                <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.value)</span>
-            &#125;
-        &#125;
-    &#125;)
-<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></p>
+<p><code>v-model</code>用来显示input输入框中的初始值<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'demo'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"message"</span> <span class="attr">v-on:keyup</span>=<span class="string">"keyup"</span> <span class="attr">style</span>=<span class="string">"height:30px"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">        el: <span class="string">'#demo'</span>,</span></span><br><span class="line">        data: &#123;</span><br><span class="line"><span class="actionscript">            message: <span class="string">"Hello,world!"</span></span></span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line"><span class="actionscript">            keyup:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">                vm.message = <span class="keyword">this</span>.value,</span></span><br><span class="line"><span class="javascript">                <span class="built_in">console</span>.log(<span class="keyword">this</span>.value)</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <h4 id="3、生命周期"><a href="#3、生命周期" class="headerlink" title="3、生命周期"></a>3、生命周期</h4><h6 id="生命周期钩子"><a href="#生命周期钩子" class="headerlink" title="生命周期钩子"></a>生命周期钩子</h6><p>生命周期钩子的函数，是用于不同阶段添加自己的代码的机会</p>
 <p>挂载：我理解的挂载，是通过new Vue()语句创建的对象后，没有执行没有渲染，而是放到HTML文档中，这个过程就是挂载，我也找不到权威的解释，这样一来可能解释得通，通过Ajax请求出来数据后，把数据插进去，再一起挂载到HTML文档中执行渲染，此时DOM元素被vm.$el替换</p>
 <div class="table-container">
@@ -222,7 +125,7 @@
 </table>
 </div>
 <p>引用官方文档生命周期图示：</p>
-<p><img src="https://cn.vuejs.org/images/lifecycle.png" srcset="zexun-t.xyz/img/loading.gif" alt="Vue å®ä¾çå½å¨æ" style="zoom: 50%;" /></p>
+<p><img src="https://cn.vuejs.org/images/lifecycle.png" alt="Vue å®ä¾çå½å¨æ" style="zoom: 50%;" /></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
@@ -282,17 +185,17 @@
 
 
 <script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
-<script src="zexun-t.xyz/js/plugin.js"></script>
-<script src="zexun-t.xyz/js/typed.js"></script>
-<script src="zexun-t.xyz/js/diaspora.js"></script>
+<script src="/blog/js/plugin.js"></script>
+<script src="/blog/js/typed.js"></script>
+<script src="/blog/js/diaspora.js"></script>
 
 
-<link rel="stylesheet" href="zexun-t.xyz/photoswipe/photoswipe.css">
-<link rel="stylesheet" href="zexun-t.xyz/photoswipe/default-skin/default-skin.css">
+<link rel="stylesheet" href="/blog/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/blog/photoswipe/default-skin/default-skin.css">
 
 
-<script src="zexun-t.xyz/photoswipe/photoswipe.min.js"></script>
-<script src="zexun-t.xyz/photoswipe/photoswipe-ui-default.min.js"></script>
+<script src="/blog/photoswipe/photoswipe.min.js"></script>
+<script src="/blog/photoswipe/photoswipe-ui-default.min.js"></script>
 
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->

@@ -11,13 +11,13 @@
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Fechin,"> 
     <meta name="description" content="鼠标点击冒泡特效小功能功能：初步实现当鼠标左键点击的时候，会产生冒泡效果。利用原生js点击事件，动态生成DOM节点，通过计时器设置图形冒泡时间。代码如下：
-var ohtml = document.,"> 
+123456789101112131415,"> 
     <meta name="author" content="John Doe"> 
     <link rel="alternative" href="atom.xml" title="ze勋的个人网站" type="application/atom+xml"> 
-    <link rel="icon" href="zexun-t.xyz/img/favicon.png"> 
+    <link rel="icon" href="/blog/img/favicon.png"> 
     
     
-<link rel="stylesheet" href="zexun-t.xyz/css/diaspora.css">
+<link rel="stylesheet" href="/blog/css/diaspora.css">
 
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
@@ -37,7 +37,7 @@ var ohtml = document.,">
     <div id="single">
     <div id="top" style="display: block;">
     <div class="bar" style="width: 0;"></div>
-    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://zexun-t.xyz/blog"></a>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://zexun-t.xyz"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
     <h3 class="subtitle">鼠标点击冒泡</h3>
     <div class="social">
@@ -58,46 +58,14 @@ var ohtml = document.,">
         <div class="stuff">
             <span>五月 29, 2020</span>
             
-  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="zexun-t.xyz/tags/%E5%8D%B3%E6%83%B3%E5%8D%B3%E5%81%9A%E7%9A%84%E5%B0%8F%E7%BB%84%E4%BB%B6/" rel="tag">即想即做的小组件</a></li></ul>
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/blog/tags/%E5%8D%B3%E6%83%B3%E5%8D%B3%E5%81%9A%E7%9A%84%E5%B0%8F%E7%BB%84%E4%BB%B6/" rel="tag">即想即做的小组件</a></li></ul>
 
 
         </div>
         <div class="content markdown">
             <h1 id="鼠标点击冒泡特效小功能"><a href="#鼠标点击冒泡特效小功能" class="headerlink" title="鼠标点击冒泡特效小功能"></a>鼠标点击冒泡特效小功能</h1><h5 id="功能：初步实现当鼠标左键点击的时候，会产生冒泡效果。"><a href="#功能：初步实现当鼠标左键点击的时候，会产生冒泡效果。" class="headerlink" title="功能：初步实现当鼠标左键点击的时候，会产生冒泡效果。"></a>功能：初步实现当鼠标左键点击的时候，会产生冒泡效果。</h5><p>利用原生js点击事件，动态生成DOM节点，通过计时器设置图形冒泡时间。代码如下：</p>
-<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> ohtml = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"html"</span>)[<span class="hljs-number">0</span>]; <span class="hljs-comment">//获取节点</span>
-<span class="hljs-keyword">var</span> obody = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'body'</span>)[<span class="hljs-number">0</span>];
-<span class="hljs-comment">//设置点击事件</span>
-ohtml.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>)</span>&#123;
-    <span class="hljs-keyword">var</span> x = e.pageX;
-    <span class="hljs-keyword">var</span> y = e.pageY;   <span class="hljs-comment">//获取鼠标的点击位置</span>
-    <span class="hljs-keyword">var</span> ele = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>); <span class="hljs-comment">//每当点击的时候动态生成dom节点</span>
-    <span class="hljs-comment">//设置样式</span>
-    ele.style.color = <span class="hljs-string">'red'</span>;
-    ele.style.zIndex = <span class="hljs-string">'999'</span>;
-    ele.style.position = <span class="hljs-string">"absolute"</span>
-    ele.style.userSelect = <span class="hljs-string">'none'</span>; <span class="hljs-comment">//设置不可选中</span>
-    ele.style.fontSize = <span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">10</span> + <span class="hljs-number">25</span> + <span class="hljs-string">"px"</span>;  <span class="hljs-comment">//随机设置文字图形的大小</span>
-    <span class="hljs-comment">//设置图标出现的位置</span>
-    ele.style.left = (x<span class="hljs-number">-10</span>) + <span class="hljs-string">'px'</span>;
-    ele.style.top = (y<span class="hljs-number">-20</span>) + <span class="hljs-string">'px'</span>;
-    <span class="hljs-comment">//将DOM节点插入body中</span>
-    obody.appendChild(ele);
-    <span class="hljs-comment">//添加图形进去</span>
-    ele.innerText = <span class="hljs-string">"♥"</span>
-    <span class="hljs-comment">//设置定时器，计算冒泡消失时间</span>
-    <span class="hljs-keyword">var</span> num = <span class="hljs-number">0</span>;
-    clearInterval(timer);
-    <span class="hljs-keyword">var</span> timer = setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
-        num++;
-        ele.style.top = y <span class="hljs-number">-20</span> - num + <span class="hljs-string">'px'</span>; <span class="hljs-comment">//设置冒泡高度</span>
-        ele.style.opacity = (<span class="hljs-number">150</span>-num)/<span class="hljs-number">120</span>; <span class="hljs-comment">//设置透明度渐变效果</span>
-		<span class="hljs-keyword">if</span> (num == <span class="hljs-number">150</span>) &#123;
-			clearInterval(timer);  <span class="hljs-comment">//清空定时器</span>
-			obody.removeChild(ele);  <span class="hljs-comment">//删除节点</span>
-        &#125;
-    &#125;,<span class="hljs-number">8</span>);<span class="hljs-comment">//每8毫秒 num加1，则冒泡出现的时间为1.2秒</span>
-&#125;</code></pre>
-<h4 id="效果图如图所示："><a href="#效果图如图所示：" class="headerlink" title="效果图如图所示："></a>效果图如图所示：</h4><p><img src="https://s1.ax1x.com/2020/05/30/tKyYee.gif" srcset="zexun-t.xyz/img/loading.gif" alt="tKyYee.gif"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ohtml = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"html"</span>)[<span class="number">0</span>]; <span class="comment">//获取节点</span></span><br><span class="line"><span class="keyword">var</span> obody = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'body'</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="comment">//设置点击事件</span></span><br><span class="line">ohtml.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x = e.pageX;</span><br><span class="line">    <span class="keyword">var</span> y = e.pageY;   <span class="comment">//获取鼠标的点击位置</span></span><br><span class="line">    <span class="keyword">var</span> ele = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>); <span class="comment">//每当点击的时候动态生成dom节点</span></span><br><span class="line">    <span class="comment">//设置样式</span></span><br><span class="line">    ele.style.color = <span class="string">'red'</span>;</span><br><span class="line">    ele.style.zIndex = <span class="string">'999'</span>;</span><br><span class="line">    ele.style.position = <span class="string">"absolute"</span></span><br><span class="line">    ele.style.userSelect = <span class="string">'none'</span>; <span class="comment">//设置不可选中</span></span><br><span class="line">    ele.style.fontSize = <span class="built_in">Math</span>.random() * <span class="number">10</span> + <span class="number">25</span> + <span class="string">"px"</span>;  <span class="comment">//随机设置文字图形的大小</span></span><br><span class="line">    <span class="comment">//设置图标出现的位置</span></span><br><span class="line">    ele.style.left = (x<span class="number">-10</span>) + <span class="string">'px'</span>;</span><br><span class="line">    ele.style.top = (y<span class="number">-20</span>) + <span class="string">'px'</span>;</span><br><span class="line">    <span class="comment">//将DOM节点插入body中</span></span><br><span class="line">    obody.appendChild(ele);</span><br><span class="line">    <span class="comment">//添加图形进去</span></span><br><span class="line">    ele.innerText = <span class="string">"♥"</span></span><br><span class="line">    <span class="comment">//设置定时器，计算冒泡消失时间</span></span><br><span class="line">    <span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line">    clearInterval(timer);</span><br><span class="line">    <span class="keyword">var</span> timer = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        num++;</span><br><span class="line">        ele.style.top = y <span class="number">-20</span> - num + <span class="string">'px'</span>; <span class="comment">//设置冒泡高度</span></span><br><span class="line">        ele.style.opacity = (<span class="number">150</span>-num)/<span class="number">120</span>; <span class="comment">//设置透明度渐变效果</span></span><br><span class="line">		<span class="keyword">if</span> (num == <span class="number">150</span>) &#123;</span><br><span class="line">			clearInterval(timer);  <span class="comment">//清空定时器</span></span><br><span class="line">			obody.removeChild(ele);  <span class="comment">//删除节点</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,<span class="number">8</span>);<span class="comment">//每8毫秒 num加1，则冒泡出现的时间为1.2秒</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="效果图如图所示："><a href="#效果图如图所示：" class="headerlink" title="效果图如图所示："></a>效果图如图所示：</h4><p><img src="https://s1.ax1x.com/2020/05/30/tKyYee.gif" alt="tKyYee.gif"></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
@@ -157,17 +125,17 @@ ohtml.onclick = <span class="hljs-function"><span class="hljs-keyword">function<
 
 
 <script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
-<script src="zexun-t.xyz/js/plugin.js"></script>
-<script src="zexun-t.xyz/js/typed.js"></script>
-<script src="zexun-t.xyz/js/diaspora.js"></script>
+<script src="/blog/js/plugin.js"></script>
+<script src="/blog/js/typed.js"></script>
+<script src="/blog/js/diaspora.js"></script>
 
 
-<link rel="stylesheet" href="zexun-t.xyz/photoswipe/photoswipe.css">
-<link rel="stylesheet" href="zexun-t.xyz/photoswipe/default-skin/default-skin.css">
+<link rel="stylesheet" href="/blog/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/blog/photoswipe/default-skin/default-skin.css">
 
 
-<script src="zexun-t.xyz/photoswipe/photoswipe.min.js"></script>
-<script src="zexun-t.xyz/photoswipe/photoswipe-ui-default.min.js"></script>
+<script src="/blog/photoswipe/photoswipe.min.js"></script>
+<script src="/blog/photoswipe/photoswipe-ui-default.min.js"></script>
 
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
