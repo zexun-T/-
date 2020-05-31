@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
-  <link rel="icon" type="image/png" href="/blog/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="zexun-t.xyz/img/favicon.png">
+  <link rel="icon" type="image/png" href="zexun-t.xyz/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -23,7 +23,7 @@
 
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/blog/lib/hint/hint.min.css" />
+  <link  rel="stylesheet" href="zexun-t.xyz/lib/hint/hint.min.css" />
 
   
     <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
@@ -41,7 +41,7 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
 
 
-<link  rel="stylesheet" href="/blog/css/main.css" />
+<link  rel="stylesheet" href="zexun-t.xyz/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
 
@@ -54,7 +54,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/blog/">&nbsp;<strong>Myblog</strong>&nbsp;</a>
+       href="zexun-t.xyz/">&nbsp;<strong>Myblog</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -71,7 +71,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/">
+              <a class="nav-link" href="zexun-t.xyz/">
                 <i class="iconfont icon-home-fill"></i>
                 Home
               </a>
@@ -83,7 +83,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/archives/">
+              <a class="nav-link" href="zexun-t.xyz/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 Archives
               </a>
@@ -95,7 +95,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/categories/">
+              <a class="nav-link" href="zexun-t.xyz/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 Categories
               </a>
@@ -107,7 +107,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/tags/">
+              <a class="nav-link" href="zexun-t.xyz/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 Tags
               </a>
@@ -119,7 +119,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/blog/about/">
+              <a class="nav-link" href="zexun-t.xyz/about/">
                 <i class="iconfont icon-user-fill"></i>
                 About
               </a>
@@ -138,7 +138,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('/blog/img/default.png') no-repeat center center;
+         style="background: url('zexun-t.xyz/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -213,12 +213,12 @@
             <article class="markdown-body">
               <h1 id="Vue-js-学习笔记"><a href="#Vue-js-学习笔记" class="headerlink" title="Vue.js  学习笔记"></a>Vue.js  学习笔记</h1><h3 id="什么是渐进式？"><a href="#什么是渐进式？" class="headerlink" title="什么是渐进式？"></a>什么是渐进式？</h3><p>Vue.js（读音 /vjuː/, 类似于 view） 是一套构建用户界面的<strong>渐进式框架</strong>。渐进式也就是“Progressive”，按照我的理解，渐进就是一步一步的意思，大概的意思应该是框架你可以只用到一部分，而不用把所有的东西都用上。 </p>
 <p>vue采用的是分离的状态：</p>
-<p><img src="https://pic1.zhimg.com/80/v2-cc3ec77bdca6da1a7e276918d894490b_720w.jpg" srcset="/blog/img/loading.gif" alt="img" style="zoom: 80%;" /></p>
+<p><img src="https://pic1.zhimg.com/80/v2-cc3ec77bdca6da1a7e276918d894490b_720w.jpg" srcset="zexun-t.xyz/img/loading.gif" alt="img" style="zoom: 80%;" /></p>
 <p>这也就是说，当你的项目比较小比较简单的时候，我们就可以只用核心部分，也就是图中的“Declarative  Rendering”（声明式渲染），跟“Component System ”（组件系统），而后按需加载加载其他部分</p>
 <p>这就是我对渐进式框架的理解，优点在于降低了学习复杂度，也让框架变得比较轻。</p>
 <h3 id="vue的两个核心"><a href="#vue的两个核心" class="headerlink" title="vue的两个核心"></a>vue的两个核心</h3><h4 id="1、响应式的数据绑定"><a href="#1、响应式的数据绑定" class="headerlink" title="1、响应式的数据绑定"></a>1、响应式的数据绑定</h4><p><strong>Vue 的核心库只关注视图层</strong>    以往的数据交互，是我们通过Ajax向服务器请求数据，然后我们通过获取操作DOM节点来改变视图，每次交互数据改变时，又要重新操作，而Vue让我们减去了操作DOM的过程，当数据发生改变时，自动帮我们更新视图。Vue还会双向绑定数据，当你在视图层操作发生改变时，监听变化从而改变其数据内容。（利用了MVVM的思想）</p>
-<p><img src="https://s1.ax1x.com/2020/05/30/tQTgDH.gif" srcset="/blog/img/loading.gif" alt="tQTgDH.gif" style="zoom:67%;" /></p>
-<h4 id="2、视图组件化"><a href="#2、视图组件化" class="headerlink" title="2、视图组件化"></a>2、视图组件化</h4><p><img src="https://cn.vuejs.org/images/components.png" srcset="/blog/img/loading.gif" alt="Component Tree" style="zoom: 50%;" /></p>
+<p><img src="https://s1.ax1x.com/2020/05/30/tQTgDH.gif" srcset="zexun-t.xyz/img/loading.gif" alt="tQTgDH.gif" style="zoom:67%;" /></p>
+<h4 id="2、视图组件化"><a href="#2、视图组件化" class="headerlink" title="2、视图组件化"></a>2、视图组件化</h4><p><img src="https://cn.vuejs.org/images/components.png" srcset="zexun-t.xyz/img/loading.gif" alt="Component Tree" style="zoom: 50%;" /></p>
 <p>这是一个组件树，通过多个小组件拼接，组成一个大组件，把组件封装起来就形成一个页面。而改变一个小组件，就不会影响其他组件页面。像堆积木一样，互相引用从而组装起来。组件拿出来别的页面也可以使用，实现组件的重复使用，有利于维护。</p>
 <h3 id="开始使用vue"><a href="#开始使用vue" class="headerlink" title="开始使用vue"></a>开始使用vue</h3><h4 id="1、创建实例：-需要已安装好vue-js，并将vue-js引入"><a href="#1、创建实例：-需要已安装好vue-js，并将vue-js引入" class="headerlink" title="1、创建实例：(需要已安装好vue.js，并将vue.js引入)"></a>1、创建实例：(需要已安装好vue.js，并将vue.js引入)</h4><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'demo'</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
@@ -244,7 +244,7 @@
         &#125;
     &#125;)
 <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></p>
-<p><img src="https://s1.ax1x.com/2020/05/30/tQxZi4.png" srcset="/blog/img/loading.gif" alt="tQxZi4.png" style="zoom: 80%;" /></p>
+<p><img src="https://s1.ax1x.com/2020/05/30/tQxZi4.png" srcset="zexun-t.xyz/img/loading.gif" alt="tQxZi4.png" style="zoom: 80%;" /></p>
 <p>还可以给属性添加上布尔值，当true的时候，添加上该属性值，当false的时候，该属性值消失。</p>
 <pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'demo'</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">v-bind:class</span>=<span class="hljs-string">'&#123;demo1:ifClass&#125;'</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
@@ -295,7 +295,7 @@
     &#125;)
 <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></p>
 <h6 id="v-on"><a href="#v-on" class="headerlink" title="v-on"></a>v-on</h6><p><code>v-on</code>:event 是用来添加事件监听的，让用户有交互效果<br><code>v-on:click</code></p>
-<p><img src="https://s1.ax1x.com/2020/05/31/tlFJxg.gif" srcset="/blog/img/loading.gif" alt="tlFJxg.gif"><br><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'demo'</span>&gt;</span>
+<p><img src="https://s1.ax1x.com/2020/05/31/tlFJxg.gif" srcset="zexun-t.xyz/img/loading.gif" alt="tlFJxg.gif"><br><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'demo'</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span> = <span class="hljs-string">"cli"</span>&gt;</span>点击<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -371,7 +371,7 @@
 </table>
 </div>
 <p>引用官方文档生命周期图示：</p>
-<p><img src="https://cn.vuejs.org/images/lifecycle.png" srcset="/blog/img/loading.gif" alt="Vue å®ä¾çå½å¨æ" style="zoom: 50%;" /></p>
+<p><img src="https://cn.vuejs.org/images/lifecycle.png" srcset="zexun-t.xyz/img/loading.gif" alt="Vue å®ä¾çå½å¨æ" style="zoom: 50%;" /></p>
 
             </article>
             <hr>
@@ -382,7 +382,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/blog/tags/vue%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/">vue框架学习</a>
+                      <a class="hover-with-bg" href="zexun-t.xyz/tags/vue%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/">vue框架学习</a>
                     
                   </div>
                 
@@ -399,7 +399,7 @@
                   <div class="post-next col-6">
                     
                     
-                      <a href="/blog/2020/05/29/demo1/">
+                      <a href="zexun-t.xyz/2020/05/29/demo1/">
                         <span class="hidden-mobile">鼠标点击冒泡</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -502,20 +502,20 @@
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="/blog/js/debouncer.js" ></script>
-<script  src="/blog/js/main.js" ></script>
+<script  src="zexun-t.xyz/js/debouncer.js" ></script>
+<script  src="zexun-t.xyz/js/main.js" ></script>
 
 <!-- Plugins -->
 
 
   
-    <script  src="/blog/js/lazyload.js" ></script>
+    <script  src="zexun-t.xyz/js/lazyload.js" ></script>
   
 
 
 
   <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/blog/js/clipboard-use.js" ></script>
+  <script  src="zexun-t.xyz/js/clipboard-use.js" ></script>
 
 
 
@@ -587,9 +587,9 @@
 
 
 
-  <script  src="/blog/js/local-search.js" ></script>
+  <script  src="zexun-t.xyz/js/local-search.js" ></script>
   <script>
-    var path = "/blog/local-search.xml";
+    var path = "zexun-t.xyz/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
       searchFunc(path, 'local-search-input', 'local-search-result');
