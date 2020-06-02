@@ -268,35 +268,31 @@
 <p>​                            <strong>数组语法：</strong>两个属性值用中括号<code>&quot;[myClass1,myClass2]&quot;</code></p>
 <p>​                            <strong>对象语法</strong>：判断是否是否加入属性值用大括号<code>&quot;{myClass1:isClass, myClass2: hasError}&quot;</code></p>
 <p>​                            <strong>数组结合形式</strong>：<code>&quot;[{myClass1:isClass}, myClass2]&quot;</code></p>
-<h3 id="让属性成为变量"><a href="#让属性成为变量" class="headerlink" title="让属性成为变量"></a>让属性成为变量</h3><pre><code class="hljs v-bing:[someAttr]">
-&#96;&#96;&#96;&lt;div v-bing:[className] &#x3D; &quot;value&quot;</code></pre>
+<h3 id="让属性成为变量"><a href="#让属性成为变量" class="headerlink" title="让属性成为变量"></a>让属性成为变量</h3><p><strong>v-bing:[someAttr] = “value”</strong></p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-bing:</span>[<span class="hljs-attr">className</span>] = <span class="hljs-string">"value"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
 <p>需要注意的是，<code>[className]</code>里面的大写字母会被转换成小写，因此，在data对象中，应该写成<code>classname:class</code></p>
 <h3 id="缩写："><a href="#缩写：" class="headerlink" title="缩写："></a>缩写：</h3><p>v-on 可以缩写成@</p>
 <p>v-bind 可以缩写成 :（冒号）</p>
 <h3 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h3><p>简单的逻辑，我们可以通过在模板中添加JavaScript表达式，例如</p>
-<pre><code class="hljs <div">
-&#96;&#96;&#96;&lt;div id&#x3D;&#39;demo&#39;&gt;&#123;&#123;name.split(&#39;&#39;).reverse().join(&#39;&#39;)&#125;&#125;&lt;&#x2F;div&gt;&#96;&#96;&#96;    使字符串翻转
-
-但是在模板中放太多的逻辑运算，会使模板过重且难以维护，因此，对于复杂的逻辑运算，应当使用**计算属性**
-
-基本形式如下：
-
-&#96;&#96;&#96;html
-&lt;div id&#x3D;&#39;demo&#39;&gt;&#123;&#123;name&#125;&#125;&lt;&#x2F;div&gt;
-&lt;script&gt;
-    var vm &#x3D; new Vue(&#123;
-           el: &#39;#demo&#39;,   &#x2F;&#x2F;id选择
+<p><code>&lt;div id=&#39;demo&#39;&gt;{{name+1234}}&lt;/div&gt;</code></p>
+<p><code>&lt;div id=&#39;demo&#39;&gt;{{name.split('').reverse().join('')}}&lt;/div&gt;</code>    使字符串翻转</p>
+<p>但是在模板中放太多的逻辑运算，会使模板过重且难以维护，因此，对于复杂的逻辑运算，应当使用<strong>计算属性</strong></p>
+<p>基本形式如下：</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'demo'</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">    <span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">           el: <span class="hljs-string">'#demo'</span>,   <span class="hljs-comment">//id选择</span></span>
            data: &#123;
-              firstName: &quot;蒙奇D&quot;,
-              lastName:&quot;路飞&quot;
+<span class="actionscript">              firstName: <span class="hljs-string">"蒙奇D"</span>,</span>
+<span class="actionscript">              lastName:<span class="hljs-string">"路飞"</span></span>
            &#125;,
            computed: &#123;
-              name: function() &#123;
-                    return this.firstName + &#39; &#39; + this.lastName                                        
+<span class="actionscript">              name: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>&#123;</span>
+<span class="actionscript">                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.firstName + <span class="hljs-string">' '</span> + <span class="hljs-keyword">this</span>.lastName                                        </span>
                     &#125;
            &#125;
 &#125;)
-&lt;&#x2F;script&gt;</code></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 <p><img src="https://s1.ax1x.com/2020/06/03/tUpdi9.png" srcset="/img/loading.gif" alt="tUpdi9.png"></p>
 <p>声明computed为一个对象，里面的定义的<strong>变量</strong>name有两个函数，默认只有一个getter函数，但需要的时候可以加上setting，表示当<code>vm.name</code>改变的时候，setter 函数会被调用，有两个函数时，变量name是一个对象形式，并且要声明两个函数，如：</p>
 <pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'demo'</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
