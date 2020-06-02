@@ -337,10 +337,27 @@
 <span class="actionscript">	<span class="hljs-keyword">new</span> Vue(&#123; el: <span class="hljs-string">'#components-demo'</span> &#125;)</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 <p><img src="https://s1.ax1x.com/2020/06/03/tUPlRA.gif" srcset="/img/loading.gif" alt="tUPlRA.gif"></p>
-<p>要注意：1、组件中，data必须是函数形式，并且return出一个对象</p>
-<p>​                2、要记得new 一个对象出来，并且，在new对象的同时应该里面应该绑定住DOM，改DOM表示你组件插入的父级</p>
-<p>​                3、<code>button-counter</code>为自定义的组件名称，选择位置将其插入</p>
-<p>​                4、template 表示字符串模板，可以解析后插入DOM结构</p>
+<p>要注意：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>1、组件中，data必须是函数形式，并且return出一个对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>2、要记得new 一个对象出来，并且，在new对象的同时应该里面应该绑定住DOM，改DOM表示你组件插入的父级</strong></td>
+</tr>
+<tr>
+<td><strong>3、<code>button-counter</code>为自定义的组件名称，选择位置将其插入</strong></td>
+</tr>
+<tr>
+<td><strong>4、template 表示字符串模板，可以解析后插入DOM结构</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
 <h3 id="绑定内联样式"><a href="#绑定内联样式" class="headerlink" title="绑定内联样式"></a>绑定内联样式</h3><p>用JavaScript 对象形式，间接改变CSS样式</p>
 <pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'only'</span> <span class="hljs-attr">v-bind:style</span>=<span class="hljs-string">'styleObject'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
