@@ -162,7 +162,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      183 字
+      1.6k 字
     </span>
   
 
@@ -172,7 +172,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      22
        分钟
     </span>
   
@@ -213,6 +213,275 @@
             <article class="markdown-body">
               <p>这篇是第四篇关于Vue的学习内容，立下的flag是每天能够写一篇学习笔记，不管是之前学过的还是今天学的，进行复习，归类跟总结，但慢慢发现自己写的小项目越来越少了，每天接受新知识是对的，但是回顾之前的基础知识也是重要的。于是我重新定制了计划：</p>
 <p>每次写博客的时候除了笔记知识。1、增加今日总结内容   包括今日写代码犯过的错误   2、一个星期做一个小项目  3、在接受新知识的同时，把以前学过的复习一遍，一个星期写一篇复习笔记。   </p>
+<h1 id="Vue-js-学习笔记"><a href="#Vue-js-学习笔记" class="headerlink" title="Vue.js 学习笔记"></a><strong>Vue.js 学习笔记</strong></h1><p>今日学习总结：<a href='[https://zexun-t.xyz/2020/05/30/%E5%88%9D%E6%8E%A2vue/](https://zexun-t.xyz/2020/05/30/初探vue/)'><code>v-on</code></a>、<a href='#2'>事件修饰符</a>、<a href='#3'>按键修饰符</a>、<a href='#4'>组合的修饰符</a>、<a href='#5'>组件的注册方式</a>、<a href='#6'>子组件是什么</a>、<a href='#7'>prop传值</a></p>
+<p>今日错误：</p>
+<p>1、模板中只能有一个根节点，用根节点包裹多个标签</p>
+<p>2、字符串模板中，多个标签用反引号表示</p>
+<p>3、局部注册的组件在子组件中不可用</p>
+<h3 id="事件绑定v-on"><a href="#事件绑定v-on" class="headerlink" title="事件绑定v-on"></a>事件绑定<span id='1'>v-on</span></h3><p>简单的处理逻辑，可以直接写在值上面：</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">"counter += 1"</span>&gt;</span>Add 1<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></code></pre>
+<p>比较复杂的处理事件，应该调用方法，在<code>methods</code> 对象中定义方法，并且可以传参</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"example-1"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">"say('hi')"</span>&gt;</span>Say hi<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">v-on:click</span>=<span class="hljs-string">"say('what')"</span>&gt;</span>Say what<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript"><span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">  el: <span class="hljs-string">'#example-1'</span>,</span>
+  methods: &#123;
+<span class="actionscript">    say: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(message)</span> </span>&#123;</span>
+      alert(message)
+    &#125;
+  &#125;
+&#125;)
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<h3 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a><span id='2'>事件修饰符</span></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.stop</td>
+<td>组织事件冒泡</td>
+</tr>
+<tr>
+<td>.pervent</td>
+<td>组织元素默认行为（如form表单默认事件提交会跳转链接）<br><code>&lt;form @submit.prevent&gt;&lt;/form&gt;</code></td>
+</tr>
+<tr>
+<td>.capture</td>
+<td>组织捕获行为</td>
+</tr>
+<tr>
+<td>.self</td>
+<td>限制事件仅作用于节点本身</td>
+</tr>
+<tr>
+<td>.once</td>
+<td>事件只有效触发一次</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>.self跟.stop 的区别：</p>
+<p>.self是将事件设置为只有自己本身触发的时候才触发，如果是冒泡传递上来的事件不触发自身事件</p>
+<p>而使用.stop可以阻止事件的冒泡,这样在点击的时候不会触发外部的点击事件</p>
+<pre><code class="hljs plain">
+</code></pre>
+<h3 id="按键修饰符"><a href="#按键修饰符" class="headerlink" title="按键修饰符"></a><span id='3'>按键修饰符</span></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>键值</th>
+<th>对应按键</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.enter</td>
+<td>.13</td>
+<td>回车</td>
+</tr>
+<tr>
+<td>.delete</td>
+<td>.8/.46</td>
+<td>删除</td>
+</tr>
+<tr>
+<td>.tab</td>
+<td>.9</td>
+<td>制表</td>
+</tr>
+<tr>
+<td>.space</td>
+<td>.32</td>
+<td>空格</td>
+</tr>
+<tr>
+<td>.esc</td>
+<td>.27</td>
+<td>退出键</td>
+</tr>
+<tr>
+<td>.left    .up    .right  .down</td>
+<td>.37 .38  .39  .40</td>
+<td></td>
+</tr>
+<tr>
+<td>鼠标按键  :  .left、 .right  .middle<br>2.2.0版本以上才有</td>
+<td></td>
+<td>左右中键</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>当需要多个按键才能实现操作的时候，多利用<span id='4'>组合修饰符</span></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>系统组合修饰符</th>
+<th>对应按键</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.ctrl</td>
+<td>Ctrl键</td>
+</tr>
+<tr>
+<td>.alt</td>
+<td>Alt键</td>
+</tr>
+<tr>
+<td>.shif</td>
+<td>Shift键</td>
+</tr>
+<tr>
+<td>.meta</td>
+<td>系统菜单键</td>
+</tr>
+</tbody>
+</table>
+</div>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> @<span class="hljs-attr">click.ctrl</span>=<span class="hljs-string">"withCtrl"</span>&gt;</span>do something<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre>
+<p>这样单纯点击是不会触发withCtrl事件，只有配合ctrl+点击能触发</p>
+<h3 id="组件的注册"><a href="#组件的注册" class="headerlink" title="组件的注册"></a><span id='5'>组件的注册</span></h3><p>组件的注册可分为，全局注册跟局部注册</p>
+<p>之前用的都是全局注册，昨天写了个对数组的排序跟筛选，然后发现sort( )函数会对原数组做出修改，于是我对该实例进行修改成组件注册，这样每次创建实例的时候，里面的数组都是原始值。就是将排序的函数单独摘出来写成一个组件。则有：</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'two'</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">filter</span> <span class="hljs-attr">v-bind:numbers</span>=<span class="hljs-string">'firstNumbers'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">filter</span>&gt;</span>  <span class="hljs-comment">&lt;!--第一个函数为了排序，但是会改变原数组 --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"three"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">filter</span> <span class="hljs-attr">v-bind:numbers</span>=<span class="hljs-string">'lastNumbers'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">filter</span>&gt;</span>  <span class="hljs-comment">&lt;!--重新new 一个组件，数组数据不会变 --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">    Vue.component(<span class="hljs-string">'filter'</span>, &#123;</span>
+<span class="actionscript">        props: [<span class="hljs-string">'numbers'</span>],   <span class="hljs-comment">//prop向子组件template里面的模板赋值</span></span>
+<span class="handlebars"><span class="xml">        template: `<span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"n in numbers"</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;n&#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>`</span></span>
+        &#125;)
+<span class="actionscript">    <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">            el: <span class="hljs-string">'#two'</span>,</span>
+            data: &#123;
+                numbers: [9, 4, 3, 1, 2, 5]
+            &#125;,
+            computed: &#123;
+<span class="actionscript">                firstNumbers: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span>
+<span class="actionscript">                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.numbers.sort(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(a, b)</span> </span>&#123;  <span class="hljs-comment">//对原数组做出了改变</span></span>
+<span class="actionscript">                        <span class="hljs-keyword">return</span> a - b;</span>
+                    	&#125;)
+                	&#125;
+        	&#125;)
+<span class="actionscript">    <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">            el: <span class="hljs-string">'#three'</span>,</span>
+            data: &#123;
+                numbers: [9, 4, 3, 1, 2, 5]
+            &#125;,
+            computed: &#123;
+<span class="actionscript">                lastNumbers: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span>
+<span class="actionscript">                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.numbers.filter(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(number)</span> </span>&#123;   <span class="hljs-comment">//不会对原数组做出改变。</span></span>
+<span class="actionscript">                        <span class="hljs-keyword">return</span> number &lt;= <span class="hljs-number">3</span></span>
+                    &#125;)
+                &#125;
+            &#125;
+        &#125;)
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<h4 id="局部注册"><a href="#局部注册" class="headerlink" title="局部注册"></a>局部注册</h4><p>全局注册所有的组件意味着即便你已经不再使用一个组件了，它仍然会被包含在你最终的构建结果中，这样会让用户的下载量变多了，于是就有了局部注册，像声明对象一样声明一个组件</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript"><span class="hljs-keyword">var</span> ComponentA = &#123;  ...  &#125;;</span>
+<span class="actionscript"><span class="hljs-keyword">var</span> ComponentB = &#123;  ...  &#125;;</span>
+<span class="actionscript"><span class="hljs-keyword">var</span> ComponentC = &#123;  ...  &#125;;</span>
+<span class="actionscript">    <span class="hljs-comment">//在 components 选项中定义你想要使用的组件：</span></span>
+<span class="actionscript"><span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">  el: <span class="hljs-string">'#app'</span>,</span>
+  components: &#123;
+<span class="actionscript">    <span class="hljs-string">'component-a'</span>: ComponentA,</span>
+<span class="actionscript">    <span class="hljs-string">'component-b'</span>: ComponentB</span>
+  &#125;
+&#125;)
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<p><strong>局部注册的组件在其子组件中不可用</strong></p>
+<p>如果你希望 <code>ComponentA</code> 在 <code>ComponentB</code> 中可用，则你需要这样写：</p>
+<pre><code class="hljs javascriptj">var ComponentB &#x3D; &#123;
+  components: &#123;
+    &#39;component-a&#39;: ComponentA
+  &#125;</code></pre>
+<p><span id='6'>什么是子组件</span></p>
+<p>我觉得子组件就是字符串模板<code>template</code>里面的模板，例子解释</p>
+<pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'example-1'</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">component-a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">component-a</span>&gt;</span>  <span class="hljs-comment">&lt;!--hello,world --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">component-b</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">component-b</span>&gt;</span>  
+        	<span class="hljs-comment">&lt;!--hello,B</span>
+<span class="hljs-comment">			hello,world --&gt;</span>
+         <span class="hljs-comment">&lt;!--解释：组件A,组件B是我声明的两个局部组件，组件B中导入A组件，这个时候，B的子组件可以调用A组件，于是第二个打印出hello,B跟hello,world --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">component-c</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">component-c</span>&gt;</span> 
+        <span class="hljs-tag">&lt;<span class="hljs-name">component-d</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">component-d</span>&gt;</span>
+        <span class="hljs-comment">&lt;!--C、D两个组件是我声明的两个全局组件，这时，可以随意嵌入任何一个子组件中，包括局部组件，不用导入！ --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="actionscript">        <span class="hljs-comment">//局部注册的组件在子组件中不可用</span></span>
+<span class="actionscript">        <span class="hljs-keyword">var</span> ComponentA = &#123;</span>
+<span class="actionscript">            data: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span>
+<span class="actionscript">                <span class="hljs-keyword">return</span> &#123;</span>
+<span class="actionscript">                    message: <span class="hljs-string">"hello,world"</span></span>
+                &#125;
+            &#125;,
+<span class="handlebars"><span class="xml">            template: "<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;message&#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>"  </span></span>
+        &#125;       
+<span class="actionscript">        <span class="hljs-keyword">var</span> ComponentB = &#123;</span>
+<span class="actionscript">            data: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span>
+<span class="actionscript">                <span class="hljs-keyword">return</span> &#123;</span>
+<span class="actionscript">                    message: <span class="hljs-string">"hello,B"</span></span>
+                &#125;
+            &#125;,
+            components: &#123;
+<span class="actionscript">                <span class="hljs-string">'component-a'</span>: ComponentA,</span>
+            &#125;,
+<span class="handlebars"><span class="xml">            template: "<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;message&#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">component-a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">component-a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>"</span></span>
+        &#125;
+
+<span class="actionscript">        Vue.component(<span class="hljs-string">'component-c'</span>, &#123;</span>
+<span class="actionscript">            data: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span>
+<span class="actionscript">                <span class="hljs-keyword">return</span> &#123;</span>
+<span class="actionscript">                    name: <span class="hljs-string">"hello,C"</span></span>
+                &#125;d
+            &#125;,
+<span class="handlebars"><span class="xml">            template: "<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;name&#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">component-d</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">component-d</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>"</span></span>
+        &#125;)
+<span class="actionscript">        Vue.component(<span class="hljs-string">'component-d'</span>, &#123;</span>
+<span class="actionscript">            data: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>&#123;</span>
+<span class="actionscript">                <span class="hljs-keyword">return</span> &#123;</span>
+<span class="actionscript">                    name: <span class="hljs-string">"hello,D"</span></span>
+                &#125;
+            &#125;,
+<span class="handlebars"><span class="xml">            template: "<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;name&#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>"</span></span>
+        &#125;)
+<span class="actionscript">        <span class="hljs-keyword">new</span> Vue(&#123;</span>
+<span class="actionscript">            el: <span class="hljs-string">'#example-1'</span>,</span>
+            components: &#123;
+<span class="actionscript">                <span class="hljs-string">'component-a'</span>: ComponentA,</span>
+<span class="actionscript">                <span class="hljs-string">'component-b'</span>: ComponentB</span>
+            &#125;
+        &#125;)
+    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
 
             </article>
             <hr>
@@ -242,6 +511,12 @@
                 <div class="post-prevnext row">
                   <div class="post-prev col-6">
                     
+                    
+                      <a href="/2020/06/05/%E5%88%9D%E6%8E%A2vue-5/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">初探vue-5</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
                     
                   </div>
                   <div class="post-next col-6">
