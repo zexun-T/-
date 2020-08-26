@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>初探vue-5 - ze勋的个人网站</title>
+  <title>Ajax的使用--省市区三级联动 - ze勋的个人网站</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -151,8 +151,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-06-05 22:01">
-      June 5, 2020 pm
+    <time datetime="2020-08-26 13:34">
+      August 26, 2020 pm
     </time>
   </div>
 
@@ -162,7 +162,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      0 字
+      585 字
     </span>
   
 
@@ -172,7 +172,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      10
        分钟
     </span>
   
@@ -211,7 +211,111 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              
+              <p>实现思路：</p>
+<p>1、通过接口，用封装好的的Ajax获取省份信息</p>
+<p>2、将Ajax获取到的信息，通过模板引擎，拼接，并且插入下拉框中</p>
+<p>3、每当级联框的值改变onchange的时候，获取到选项的value（id），触发ajax函数，再进行查询，拼接，插入</p>
+<pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- 选择框 --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"province"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>请选择省份<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"city"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>请选择城市<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"area"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>请选择县城<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- 引入文件 --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./template-web.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./ajax.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- 省级的模板 --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'provinceTpl'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/html"</span>&gt;</span>
+<span class="handlebars"><span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>请选择省份<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">    </span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-builtin-name">each</span> province&#125;&#125;</span></span>
+<span class="handlebars"><span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">&#123;&#123;$value.id&#125;&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;$value.areaName&#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">    </span><span class="hljs-template-tag">&#123;&#123;/<span class="hljs-name"><span class="hljs-builtin-name">each</span></span>&#125;&#125;</span></span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- 市级的模板 --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'cityTpl'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/html"</span>&gt;</span>
+<span class="handlebars"><span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>请选择城市<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">    </span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-builtin-name">each</span> city&#125;&#125;</span></span>
+<span class="handlebars"><span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">&#123;&#123;$value.id&#125;&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;$value.areaName&#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">    </span><span class="hljs-template-tag">&#123;&#123;/<span class="hljs-name"><span class="hljs-builtin-name">each</span></span>&#125;&#125;</span></span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- 县区的模板 --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'areaTpl'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/html"</span>&gt;</span>
+<span class="handlebars"><span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>请选择县城<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span></span></span>
+<span class="handlebars"><span class="xml">    </span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-builtin-name">each</span> area&#125;&#125;</span></span>
+<span class="handlebars"><span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">&#123;&#123;$value.id&#125;&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;$value.areaName&#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>    // 将value赋予上id,用以下次用ajax查询</span></span>
+<span class="handlebars"><span class="xml">    </span><span class="hljs-template-tag">&#123;&#123;/<span class="hljs-name"><span class="hljs-builtin-name">each</span></span>&#125;&#125;</span></span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="javascript">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">$</span>(<span class="hljs-params">id</span>)</span>&#123;</span>
+<span class="javascript">      <span class="hljs-keyword">return</span> <span class="hljs-built_in">document</span>.getElementById(id)</span>
+    &#125;
+    ajax(&#123;
+<span class="actionscript">      type:<span class="hljs-string">'get'</span>,</span>
+<span class="actionscript">      url:<span class="hljs-string">'http://area.ylapi.cn/ad_area/division_de.u'</span>,</span>
+      data:&#123;
+        uid : 11324,
+<span class="actionscript">        appkey : <span class="hljs-string">'d466e57c83fb3796f6641ce7b819e4ef'</span>,</span>
+        parentId :0
+      &#125;,
+<span class="actionscript">      success: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(data)</span> </span>&#123;</span>
+<span class="actionscript">        <span class="hljs-keyword">var</span> html = template(<span class="hljs-string">'provinceTpl'</span>,&#123;province:data.datas&#125;)</span>
+<span class="javascript">        $(<span class="hljs-string">'province'</span>).innerHTML = html</span>
+      &#125;
+    &#125;)
+<span class="javascript">    $(<span class="hljs-string">'province'</span>).onchange = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span>
+<span class="actionscript">      <span class="hljs-keyword">var</span> pid = <span class="hljs-keyword">this</span>.value</span>
+<span class="javascript">      $(<span class="hljs-string">'area'</span>).innerHTML = <span class="hljs-string">'&lt;option&gt;请选择县城&lt;/option&gt;'</span></span>
+      ajax(&#123;
+<span class="actionscript">      type:<span class="hljs-string">'get'</span>,</span>
+<span class="actionscript">      url:<span class="hljs-string">'http://area.ylapi.cn/ad_area/division_de.u'</span>,</span>
+      data:&#123;
+        uid : 11324,
+<span class="actionscript">        appkey : <span class="hljs-string">'d466e57c83fb3796f6641ce7b819e4ef'</span>,</span>
+        parentId : pid
+      &#125;,
+<span class="actionscript">      success: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(data)</span> </span>&#123;</span>
+<span class="actionscript">        <span class="hljs-keyword">var</span> html = template(<span class="hljs-string">'cityTpl'</span>,&#123;city:data.datas&#125;)</span>
+<span class="javascript">        $(<span class="hljs-string">'city'</span>).innerHTML = html</span>
+      &#125;
+    &#125;)
+  &#125;
+<span class="javascript">  $(<span class="hljs-string">'city'</span>).onchange = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span>
+<span class="actionscript">      <span class="hljs-keyword">var</span> pid = <span class="hljs-keyword">this</span>.value</span>
+      ajax(&#123;
+<span class="actionscript">      type:<span class="hljs-string">'get'</span>,</span>
+<span class="actionscript">      url:<span class="hljs-string">'http://area.ylapi.cn/ad_area/division_de.u'</span>,</span>
+      data:&#123;
+        uid : 11324,
+<span class="actionscript">        appkey : <span class="hljs-string">'d466e57c83fb3796f6641ce7b819e4ef'</span>,</span>
+        parentId : pid
+      &#125;,
+<span class="actionscript">      success: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(data)</span> </span>&#123;</span>
+<span class="actionscript">        <span class="hljs-keyword">var</span> html = template(<span class="hljs-string">'areaTpl'</span>,&#123;area:data.datas&#125;)</span>
+<span class="javascript">        $(<span class="hljs-string">'area'</span>).innerHTML = html</span>
+      &#125;
+    &#125;)
+  &#125;
+  <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+<p>效果如下：</p>
+<p><img src="https://s1.ax1x.com/2020/08/26/dRfLM8.gif" srcset="/img/loading.gif" alt=""></p>
+
             </article>
             <hr>
             <div>
@@ -220,7 +324,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/vue-%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/">vue 框架学习</a>
+                      <a class="hover-with-bg" href="/categories/JS%E7%AF%87-ajax/">JS篇-ajax</a>
                     
                   </div>
                 
@@ -241,9 +345,9 @@
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/08/25/Ajax%E5%8F%8A%E5%B0%81%E8%A3%85/">
+                      <a href="/2020/08/26/JS%E6%95%B0%E7%BB%84%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Ajax及封装</span>
+                        <span class="hidden-mobile">JS数组的常用方法</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -251,8 +355,8 @@
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/06/04/%E5%88%9D%E6%8E%A2vue-4/">
-                        <span class="hidden-mobile">初探vue(4)</span>
+                      <a href="/2020/08/26/%E5%89%8D%E7%AB%AF%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
+                        <span class="hidden-mobile">前端模板引擎的基本使用</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -407,7 +511,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "初探vue-5&nbsp;",
+        "Ajax的使用--省市区三级联动&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

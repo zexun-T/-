@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>初探vue-5 - ze勋的个人网站</title>
+  <title>Ajax及封装 - ze勋的个人网站</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -151,8 +151,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-06-05 22:01">
-      June 5, 2020 pm
+    <time datetime="2020-08-25 16:16">
+      August 25, 2020 pm
     </time>
   </div>
 
@@ -162,7 +162,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      0 字
+      1.2k 字
     </span>
   
 
@@ -172,7 +172,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      16
        分钟
     </span>
   
@@ -211,7 +211,126 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              
+              <h1 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h1><h3 id="ajax是什么？"><a href="#ajax是什么？" class="headerlink" title="ajax是什么？"></a>ajax是什么？</h3><p>ajax是浏览器提供的一套方法，在后台与服务器进行少量数据交换，使网页实现异步更新，实现页面无刷新更新数据，例如应用在页面分页加载数据，上拉加载更多数据，搜索框提示相应信息，表单离开焦点验证信息。</p>
+<h3 id="Ajax实现原理"><a href="#Ajax实现原理" class="headerlink" title="Ajax实现原理"></a>Ajax实现原理</h3><p>浏览器端—-&gt;创建Ajax</p>
+<p>Ajax  &gt;&gt;&gt;&gt; 发送请求到服务器端</p>
+<p>服务器端 &gt;&gt;&gt;&gt;&gt; 响应数据到Ajax</p>
+<p>Ajax &gt;&gt;&gt;&gt; 将服务器端的数据发送给浏览器端</p>
+<p>Ajax其中扮演的就是浏览器端创建出来的傀儡中间角色</p>
+<h3 id="Ajax的实现步骤"><a href="#Ajax的实现步骤" class="headerlink" title="Ajax的实现步骤"></a>Ajax的实现步骤</h3><h4 id="1、创建出Ajax对象"><a href="#1、创建出Ajax对象" class="headerlink" title="1、创建出Ajax对象"></a>1、创建出Ajax对象</h4><p><code>var xhr =new XmlHttpRequest();</code></p>
+<h4 id="2、告诉Ajax请求地址以及请求方式"><a href="#2、告诉Ajax请求地址以及请求方式" class="headerlink" title="2、告诉Ajax请求地址以及请求方式"></a>2、告诉Ajax请求地址以及请求方式</h4><p><code>xhr.open(&#39;get&#39;,&#39;http://localhost:3000/get&#39;);</code></p>
+<p><code>xhr.open(&#39;post&#39;,&#39;http://localhost:3000/post&#39;)</code></p>
+<p><code>xhr.open()</code> 第三个参数表示是以异步的方式还是同步的方式提交。默认true是异步</p>
+<h4 id="3、发送请求"><a href="#3、发送请求" class="headerlink" title="3、发送请求"></a>3、发送请求</h4><p><code>xhr.send()</code></p>
+<h4 id="4、获取服务器端与客户端的响应数据"><a href="#4、获取服务器端与客户端的响应数据" class="headerlink" title="4、获取服务器端与客户端的响应数据"></a>4、获取服务器端与客户端的响应数据</h4><pre><code class="hljs javascript">xhr.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+	<span class="hljs-built_in">console</span>.log(xhr.responseText)
+&#125;</code></pre>
+<h5 id="服务器端响应的数据格式："><a href="#服务器端响应的数据格式：" class="headerlink" title="服务器端响应的数据格式："></a>服务器端响应的数据格式：</h5><p>大多数情况下会以JSON对象（字符串类型）作为响应数据的格式</p>
+<p><code>&#39;{&quot;name&quot;:&quot;zx&quot;}&#39;</code></p>
+<h5 id="转换服务器端的返回数据"><a href="#转换服务器端的返回数据" class="headerlink" title="转换服务器端的返回数据"></a>转换服务器端的返回数据</h5><p>用<code>JSON.parse()</code>    方法将json字符串转化为json对象</p>
+<p><code>JSON.parse(xhr.responseText)</code></p>
+<p>转换后：</p>
+<p><code>{name:&quot;zx&quot;}</code>    </p>
+<h4 id="·GET的请求方式"><a href="#·GET的请求方式" class="headerlink" title="·GET的请求方式"></a>·GET的请求方式</h4><h5 id="请求参数拼接在请求地址后面"><a href="#请求参数拼接在请求地址后面" class="headerlink" title="请求参数拼接在请求地址后面"></a>请求参数拼接在请求地址后面</h5><p><code>xhr.open(&#39;get&#39;,&#39;http://localhost:3000/info?id=12345&#39;,true)</code></p>
+<p><code>xhr.open()</code> 第三个参数表示是以异步的方式还是同步的方式提交。</p>
+<h4 id="POST的请求方式"><a href="#POST的请求方式" class="headerlink" title=".POST的请求方式"></a>.POST的请求方式</h4><h5 id="1）设置请求头信息"><a href="#1）设置请求头信息" class="headerlink" title="1）设置请求头信息"></a>1）设置请求头信息</h5><p><code>xhr.setRequestHeader(&#39;Content-type&#39;, &#39;application/x-www-form-urlencoded&#39;);</code>第二个参数为请求参数格式</p>
+<h5 id="2）发送请求信息参数"><a href="#2）发送请求信息参数" class="headerlink" title="2）发送请求信息参数"></a>2）发送请求信息参数</h5><p><code>xhr.send(&#39;name=zx&amp;age=18&#39;);</code></p>
+<h6 id="请求参数的格式"><a href="#请求参数的格式" class="headerlink" title="请求参数的格式"></a>请求参数的格式</h6><p>1、application/x-www-form-urlencoded：则发送请求的请求信息转换为：<code>name=zx&amp;age=18</code></p>
+<p>2、application/json : 则发送请求的请求信息转换为对象:  <code>{name:&#39;zx&#39;,age:&#39;18&#39;}</code>，但是请求参数的传递必须以字符串的格式进行传递</p>
+<p>​    所以我们要用<code>JSON.stringify()</code>将json对象转换为字符串格式</p>
+<h4 id="Ajax状态码"><a href="#Ajax状态码" class="headerlink" title="Ajax状态码"></a>Ajax状态码</h4><p>0：请求为初始化  （没有调用open()）</p>
+<p>1：请求已经建立，但是还没有发送（还没有调用send()）</p>
+<p>2:  请求已经发送</p>
+<p>3、请求正在处理，通常响应中已经有部分数据可以用了</p>
+<p>4、响应已经完成，可以获取并使用服务器的响应</p>
+<p>用<code>xhr.readyState</code> 获取Ajax状态码</p>
+<p>onreadystatechange事件，当Ajax状态码发生变化时将自动触发该事件</p>
+<p>推荐用 onload事件，不需要判断Ajax状态码，而onreadystatechange事件，可以通过判断不同的状态，进行不同的操作</p>
+<h4 id="http状态码"><a href="#http状态码" class="headerlink" title="http状态码"></a>http状态码</h4><p>400：这个请求是无效的,并没有进入后台服务器(控制器)里，可能网络中断</p>
+<p>404： 请求地址无效，检查请求地址是否错误</p>
+<p>500： 服务器端错误</p>
+<p>200：正常响应状态码</p>
+<p>用<code>xhr.status</code> 获取Ajax状态码</p>
+<h4 id="Ajax的封装代码"><a href="#Ajax的封装代码" class="headerlink" title="Ajax的封装代码"></a>Ajax的封装代码</h4><pre><code class="hljs javascript">
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ajaxFunc</span>(<span class="hljs-params">method, url, data, callback, flag</span>) </span>&#123;
+    <span class="hljs-keyword">var</span> xhr = <span class="hljs-literal">null</span>;
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.XMLHttpRequest) &#123;
+        xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();
+    &#125; <span class="hljs-keyword">else</span> &#123;
+        xhr = <span class="hljs-keyword">new</span> ActiveXObject(<span class="hljs-string">'Microsoft.XHLHttp'</span>);  <span class="hljs-comment">// 针对IE浏览器</span>
+    &#125;
+    <span class="hljs-keyword">if</span> (method == <span class="hljs-string">'GET'</span>) &#123;
+        xhr.open(method, url + <span class="hljs-string">'?'</span> + data, flag);
+        xhr.send();
+    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (method == <span class="hljs-string">'POST'</span>) &#123;
+        xhr.open(method, url, flag);
+        xhr.setRequestHeader(<span class="hljs-string">'Content-type'</span>, <span class="hljs-string">'application/x-www-form-urlencoded'</span>);
+        xhr.send(data);
+    &#125;
+    xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+        <span class="hljs-keyword">if</span> (xhr.readyState == <span class="hljs-number">4</span>) &#123;
+            <span class="hljs-keyword">if</span> (xhr.status == <span class="hljs-number">200</span>) &#123;
+                callback(xhr.responseText);
+            &#125;
+        &#125;
+    &#125;
+&#125;</code></pre>
+<p>由于参数比较多，整理成一个对象传入</p>
+<pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ajax</span>(<span class="hljs-params">options</span>) </span>&#123;
+  <span class="hljs-keyword">let</span> defaults = &#123;
+    type: <span class="hljs-string">'get'</span>,
+    url: <span class="hljs-string">''</span>,
+    data: &#123;&#125;, <span class="hljs-comment">//接收参数 如 name=zs  age=18</span>
+    flag: <span class="hljs-literal">true</span>,
+    header: &#123;
+      <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/x-www-form-urlencoded'</span>
+    &#125;,
+    success: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+    &#125;,
+    error: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+    &#125;
+  &#125;
+  <span class="hljs-comment">// 使用option对象中的属性覆盖defaults对象中的属性</span>
+  <span class="hljs-built_in">Object</span>.assign(defaults, options)
+  <span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();
+  <span class="hljs-keyword">var</span> params = <span class="hljs-string">''</span>
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> attr <span class="hljs-keyword">in</span> defaults.data) &#123;
+    params += <span class="hljs-string">`<span class="hljs-subst">$&#123;attr&#125;</span>=<span class="hljs-subst">$&#123;defaults.data[attr]&#125;</span>&amp;`</span>  <span class="hljs-comment">//name=zs&amp;age18&amp;</span>
+  &#125;
+  <span class="hljs-comment">//将参数最后面的'&amp;'去掉</span>
+  params = params.substr(<span class="hljs-number">0</span>, params.length - <span class="hljs-number">1</span>)
+  <span class="hljs-comment">//判断请求方式</span>
+  <span class="hljs-keyword">if</span> (defaults.type === <span class="hljs-string">'get'</span>) &#123;
+    defaults.url = defaults.url + <span class="hljs-string">'?'</span> + params; <span class="hljs-comment">//get请求参数拼接</span>
+  &#125;
+  <span class="hljs-comment">//配置ajax对象</span>
+  xhr.open(defaults.type, defaults.url, defaults.flag);
+  <span class="hljs-keyword">if</span> (defaults.type === <span class="hljs-string">'post'</span>) &#123;
+    <span class="hljs-keyword">var</span> contentType = defaults.header[<span class="hljs-string">'Content-Type'</span>]
+    xhr.setRequestHeader(<span class="hljs-string">'Content-Type'</span>, contentType)  <span class="hljs-comment">//设置请求头</span>
+    <span class="hljs-keyword">if</span> (contentType === <span class="hljs-string">'application/json'</span>) &#123;
+      xhr.send(<span class="hljs-built_in">JSON</span>.stringify(defaults.data))  <span class="hljs-comment">//数据的传递必须是字符串</span>
+    &#125; <span class="hljs-keyword">else</span> &#123;
+      xhr.send(params)
+    &#125;
+  &#125; <span class="hljs-keyword">else</span> &#123;
+    <span class="hljs-comment">//get方法直接send出去</span>
+    xhr.send()
+  &#125;
+    xhr.onload = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+      <span class="hljs-keyword">var</span> contentType = xhr.getResponseHeader(<span class="hljs-string">'Content-Type'</span>)
+      <span class="hljs-keyword">var</span> responseText = xhr.responseText
+      <span class="hljs-keyword">if</span> (contentType.includes(<span class="hljs-string">'application/json'</span>)) &#123;
+        responseText = <span class="hljs-built_in">JSON</span>.parse(responseText)  <span class="hljs-comment">//换成对象形式，便于我们操作</span>
+      &#125;
+      <span class="hljs-keyword">if</span> (xhr.status == <span class="hljs-number">200</span>) &#123;
+        defaults.success(responseText,xhr)
+      &#125; <span class="hljs-keyword">else</span> &#123;
+        defaults.error(responseText,xhr);
+      &#125;
+    &#125;
+&#125;</code></pre>
+
             </article>
             <hr>
             <div>
@@ -220,7 +339,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/vue-%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/">vue 框架学习</a>
+                      <a class="hover-with-bg" href="/categories/JS%E7%AF%87-ajax/">JS篇-ajax</a>
                     
                   </div>
                 
@@ -241,9 +360,9 @@
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/08/25/Ajax%E5%8F%8A%E5%B0%81%E8%A3%85/">
+                      <a href="/2020/08/26/%E5%89%8D%E7%AB%AF%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Ajax及封装</span>
+                        <span class="hidden-mobile">前端模板引擎的基本使用</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -251,8 +370,8 @@
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/06/04/%E5%88%9D%E6%8E%A2vue-4/">
-                        <span class="hidden-mobile">初探vue(4)</span>
+                      <a href="/2020/06/05/%E5%88%9D%E6%8E%A2vue-5/">
+                        <span class="hidden-mobile">初探vue-5</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -407,7 +526,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "初探vue-5&nbsp;",
+        "Ajax及封装&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
